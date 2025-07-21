@@ -19,14 +19,21 @@ SA2 Extra Subtitles (Rajoute des sous-titres là où il n'y en avait pas.)
 https://github.com/angrysonicgamer/SA2-Extra-Subtitles/
 
 Crédits :
+
 Kesnos : Trad FR
+
 Windii : Retraduction originale en anglais
 
 Remerciements : 
+
 SPEEPSHighway : "HD GUI", "Enable Hidden Dialogue" et "Cutscene Revamp"
+
 CheatFreak : "HD GUI for CS+", "HD GUI for Chao World Extended"
+
 KrisVDM : plugin "Drop Shadow and other effects"
+
 romein : plugin "Multi Color Gradient"
+
 xtremesupotzu : Sauvegarde de la retraduction des recaps
 Demon Dethchase : Sauvegarde de la retraduction des recaps
 Firebow59 : SofdecVideoTools
