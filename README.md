@@ -37,3 +37,8 @@ romein : plugin "Multi Color Gradient"
 xtremesupotzu : Sauvegarde de la retraduction des recaps
 Demon Dethchase : Sauvegarde de la retraduction des recaps
 Firebow59 : SofdecVideoTools
+
+N'hésitez pas à m'envoyer des messages privés si vous trouvez des erreurs pour que je puisse les corriger. 
+
+Un serveur discord est aussi disponible à cette adresse en cas de besoin.
+https://discord.gg/TPdsRYPFE8
