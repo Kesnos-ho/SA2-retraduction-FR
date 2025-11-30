@@ -2,6 +2,23 @@
 
 #include "pch.h"
 
+void (*LoadCustomExtraSubs)(const char* jsonPath, Languages language, int codepage) = nullptr;
+
+extern "C" __declspec(dllexport) void Init(const char* path, const HelperFunctions& helperFunctions)
+{
+	auto sa2ExtraSubs = helperFunctions.Mods->find("sa2-extra-subtitles");
+	if (sa2ExtraSubs != nullptr)
+	{
+		LoadCustomExtraSubs = sa2ExtraSubs->GetDllExport<decltype(LoadCustomExtraSubs)>("LoadCustomExtraSubs");
+		// call the retrieved function later
+	}
+	if (LoadCustomExtraSubs != nullptr)
+	{
+		std::string jsonPath = std::string(path) + "\\ExtraSubs\\Custom.json"; // modPath is the path to YOUR mod, the rest might be anything you want
+		LoadCustomExtraSubs(jsonPath.c_str(), Language_French, 1252);
+	}
+};
+
 const char MasterStringListFrench0[] = "\tMode solo"; /* "\tMode solo" */
 
 const char MasterStringListFrench1[] = "\tMode VS"; /* "\tMode VS" */

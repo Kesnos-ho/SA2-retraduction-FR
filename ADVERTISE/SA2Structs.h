@@ -4,23 +4,38 @@
 #include "ninja.h"
 #include "SA2Enums.h"
 
+typedef Uint32 NJD_SPRITE;
+typedef Uint32 NJD_FLAG;
+typedef Uint32 NJD_CONTROL_3D;
+typedef DWORD _DWORD;
+typedef Uint32 NJD_COLOR_TARGET;
+typedef Uint32 NJD_COLOR_BLENDING;
+typedef Uint32 NJD_TEX_SHADING;
+typedef Uint32 NJD_DRAW;
+typedef Uint32 NJD_TEXATTR;
+
 // SA2 Structs
 
-using Vector3 = NJS_VECTOR;
-
 struct EntityData1;
+struct taskwk;
 struct ObjectListEntry;
 struct COL;
 struct ModelIndex;
 struct SETEntry;
+struct _OBJ_EDITENTRY;
 struct SETObjectData;
+struct OBJ_CONDITION;
 struct CollisionInfo;
+struct colliwk;
 struct struct_0;
 struct AnimationIndex;
 struct AnimationInfo;
 struct CollisionData;
+struct CCL_INFO;
 struct CharObj2Base;
+struct playerwk;
 struct EntityData2;
+struct motionwk;
 struct LaunchConfig_vtable;
 struct ChaoDataBase;
 struct ChaoUnknownE;
@@ -30,9 +45,15 @@ struct ChaoData1;
 struct ObjUnknownA;
 struct ObjUnknownB;
 struct ObjectMaster;
+struct task;
 struct LoopHead;
+struct CameraInfo;
+struct CameraParam;
 
 using ObjectFuncPtr = void(__cdecl*)(ObjectMaster*);
+using TaskFuncPtr = void(__cdecl*)(task*);
+using CameraFuncPtr = void(__cdecl*)(CameraInfo*, CameraParam*);
+using ModelFuncPtr = void(__cdecl*)(NJS_OBJECT*);
 
 // All structs should be packed.
 #pragma pack(push, 1)
@@ -51,6 +72,14 @@ union __declspec(align(2)) Data1Ptr
 	ChaoDebugData1 *ChaoDebug;
 };
 
+union __declspec(align(2)) taskwkPtr
+{
+	void* Undefined;
+	taskwk* twp;
+	ChaoData1* Chao;
+	ChaoDebugData1* ChaoDebug;
+};
+
 union Data2Ptr
 {
 	void *Undefined;
@@ -58,6 +87,15 @@ union Data2Ptr
 	EntityData2 *Entity;
 	CharObj2Base *Character;
 	UnknownData2 *Unknown_Chao;
+};
+
+union motionwkPtr
+{
+	void* Undefined;
+	ObjUnknownB* UnknownB;
+	motionwk* Entity;
+	playerwk* Character;
+	UnknownData2* Unknown_Chao;
 };
 
 struct ObjectMaster
@@ -84,6 +122,30 @@ struct ObjectMaster
 	void *field_4C;
 };
 
+struct task
+{
+	task* last;
+	task* next;
+	task* ptp;
+	task* ctp;
+	TaskFuncPtr exec;
+	TaskFuncPtr disp;
+	TaskFuncPtr dest;
+	TaskFuncPtr dispDelayed1;
+	TaskFuncPtr dispDelayed2;
+	TaskFuncPtr dispDelayed3;
+	TaskFuncPtr dispDelayed4;
+	void* field_2C;
+	OBJ_CONDITION* ocp;
+	taskwkPtr Data1;
+	UnknownData2* EntityData2;
+	ObjUnknownA* UnknownA_ptr;
+	motionwkPtr anywk;
+	char* Name;
+	char* NameAgain;
+	void* thp;
+};
+
 struct SETObjectData
 {
 	uint8_t LoadCount;
@@ -94,10 +156,22 @@ struct SETObjectData
 	float Distance;
 };
 
+struct OBJ_CONDITION
+{
+	char scCount;
+	char scUserFlag;
+	__int16 ssCondition;
+	task* pTask;
+	_OBJ_EDITENTRY* pObjEditEntry;
+	float fRangeOut;
+};
+
 struct Rotation
 {
 	Angle x, y, z;
 };
+
+using Angle3 = Rotation;
 
 struct EntityData1
 {
@@ -111,6 +185,20 @@ struct EntityData1
 	NJS_VECTOR Position;
 	NJS_VECTOR Scale;
 	CollisionInfo *Collision;
+};
+
+struct taskwk
+{
+	char mode;
+	char smode;
+	char id;
+	char btimer;
+	__int16 flag;
+	unsigned __int16 wtimer;
+	Angle3 ang;
+	NJS_POINT3 pos;
+	NJS_POINT3 scl;
+	colliwk* cwp;
 };
 
 struct MotionTableData
@@ -517,6 +605,17 @@ struct EntityData2
 	float Weight;
 };
 
+struct motionwk
+{
+	NJS_POINT3 spd;
+	NJS_POINT3 acc;
+	Angle3 ang_aim;
+	Angle3 ang_spd;
+	float rad;
+	float height;
+	float weight;
+};
+
 struct PhysicsData
 {
 	int HangTime;
@@ -554,18 +653,56 @@ struct PhysicsData
 	float CenterHeight;
 };
 
+// Physics struct from SADX symbols
+struct player_parameter
+{
+	int jump2_timer;
+	float pos_error;
+	float lim_h_spd;
+	float lim_v_spd;
+	float max_x_spd;
+	float max_psh_spd;
+	float jmp_y_spd;
+	float nocon_speed;
+	float slide_speed;
+	float jog_speed;
+	float run_speed;
+	float rush_speed;
+	float crash_speed;
+	float dash_speed;
+	float jmp_addit;
+	float run_accel;
+	float air_accel;
+	float slow_down;
+	float run_break;
+	float air_break;
+	float air_resist_air;
+	float air_resist;
+	float air_resist_y;
+	float air_resist_z;
+	float grd_frict;
+	float grd_frict_z;
+	float lim_frict;
+	float rat_bound;
+	float rad;
+	float height;
+	float weight;
+	float eyes_height;
+	float center_height;
+};
+
 struct CharAnimInfo
 {
-	__int16 AnimationFrame;
+	__int16 mtnmode;
 	__int16 Next;
 	__int16 Current;
 	__int16 Animation3;
 	__int16 field_8;
-	__int16 field_A;
+	__int16 acttimer;
 	__int16 field_C;
 	char field_E;
 	char field_F;
-	float field_10;
+	float nframe;
 	float field_14;
 	float field_18;
 	char field_1C;
@@ -578,6 +715,40 @@ struct CharAnimInfo
 	char field_23;
 	AnimationInfo *Animations;
 	NJS_MOTION *Motion;
+};
+
+struct mtnjvwk
+{
+	__int16 mtnmode;
+	unsigned __int16 reqaction;
+	unsigned __int16 field_19;
+	unsigned __int16 action;
+	unsigned __int16 lastaction;
+	unsigned __int16 nextaction;
+	unsigned __int16 acttimer;
+	__int16 flag;
+	float nframe;
+	float start_frame;
+	float* spdp;
+	float* workp;
+	char field_20;
+	char field_21;
+	char field_22;
+	char field_23;
+	AnimationInfo* plactptr;
+	NJS_MOTION* actwkptr;
+};
+
+struct shadowwk
+{
+	int angx;
+	int angz;
+	unsigned int Attr_top;
+	unsigned int Attr_bottom;
+	float y_top;
+	float y_bottom;
+	unsigned int _Attr_top;
+	unsigned int _Attr_bottom;
 };
 
 // Vertical surface information for shadows and ripples
@@ -662,6 +833,53 @@ struct CharObj2Base
 	CharSurfaceInfo SurfaceInfo;
 };
 
+struct playerwk
+{
+	char PlayerNum;
+	char CharID;
+	char Costume;
+	char CharID2;
+	char ActionWindowItems[8];
+	char ActionWindowItemCount;
+	char field_D[3];
+	__int16 Powerups;
+	__int16 field_12;
+	__int16 DisableControlTimer;
+	__int16 UnderwaterTime;
+	__int16 IdleTime;
+	__int16 ConfuseTime;
+	char gap1C[8];
+	int Upgrades;
+	float field_28;
+	Angle TiltAngle;
+	float PathDist;
+	float Up;
+	char field_38[8];
+	float SomeMultiplier;
+	int field_44;
+	float MechHP;
+	NJS_POINT3 eff;
+	NJS_POINT3 acc;
+	NJS_VECTOR spd;
+	NJS_POINT3 wall_normal;
+	NJS_POINT3 floor_normal;
+	SurfaceFlags CurrentSurfaceFlags;
+	SurfaceFlags PreviousSurfaceFlags;
+	csts* cstsp; //dyncol info
+	task* htp;
+	char gap98[4];
+	task* HoldTarget;
+	task* CurrentDyncolTask;
+	int field_A4;
+	char gapA8[16];
+	LoopHead* PathData;
+	NJS_MOTION** Animation;
+	player_parameter p;
+	NJS_VECTOR SomeVectors[4];
+	mtnjvwk mj;
+	shadowwk shadow;
+};
+
 struct SETEntry
 {
 	__int16 ID;
@@ -672,12 +890,34 @@ struct SETEntry
 	NJS_VECTOR Scale;
 };
 
+struct _OBJ_EDITENTRY
+{
+	unsigned __int16 usID;
+	__int16 rotx;
+	__int16 roty;
+	__int16 rotz;
+	float xpos;
+	float ypos;
+	float zpos;
+	float xscl;
+	float yscl;
+	float zscl;
+};
+
 struct CollisionHitInfo
 {
 	__int8 my_num;
 	__int8 hit_num;
 	unsigned __int16 flag;
 	EntityData1* hit_entity;
+};
+
+struct c_colli_hit_info
+{
+	char my_num;
+	char hit_num;
+	unsigned __int16 flag;
+	taskwk* hit_twp;
 };
 
 struct CollisionInfo
@@ -694,6 +934,22 @@ struct CollisionInfo
 	__int16 my_num;
 	__int16 hit_num;
 	CollisionInfo* CollidingObject; // the first colliding object
+};
+
+struct colliwk
+{
+	unsigned __int16 id;
+	__int16 nbHit;
+	unsigned __int16 flag;
+	unsigned __int16 nbInfo;
+	float colli_range;
+	CCL_INFO* info;
+	c_colli_hit_info hit_info[16];
+	NJS_POINT3 normal;
+	task* mytask;
+	__int16 my_num;
+	__int16 hit_num;
+	colliwk* hit_cwp;
 };
 
 struct ChaoCharacterBond
@@ -893,7 +1149,7 @@ struct AnimationInfo
 {
 	__int16 AnimNum;
 	__int16 ModelNum;
-	__int16 anonymous_2;
+	__int16 mtnmode;
 	__int16 NextAnimation;
 	float TransitionSpeed;
 	float AnimationSpeed;
@@ -912,6 +1168,23 @@ struct CollisionData
 	Float param3;
 	Float param4;
 	Rotation rotation;
+};
+
+struct CCL_INFO
+{
+	char kind;
+	char form;
+	char push;
+	char damage;
+	unsigned int attr;
+	NJS_POINT3 center;
+	float a;
+	float b;
+	float c;
+	float d;
+	int angx;
+	int angy;
+	int angz;
 };
 
 struct JiggleInfo
@@ -992,7 +1265,9 @@ struct SonicCharObj2
 	char gap35E[8];
 	__int16 SomersaultTime;
 	__int16 SpindashCounter;
-	char field_36A[14];
+	char field_36A[6];
+	int FlameRingPulse;
+	int BounceBraceletPulse;
 	NJS_VECTOR SpineJigglePos;
 	NJS_VECTOR LightDashPos;
 	JiggleInfo* SpineJiggle;
@@ -1293,6 +1568,12 @@ struct LevelRankTimes
 	MinSec ARank;
 };
 
+struct Mission4TimeLimits
+{
+	char Level;
+	MinSec TimeLimit;
+};
+
 struct BlackMarketItem
 {
 	ChaoItemCategory Category;
@@ -1416,18 +1697,68 @@ struct EmeManObj2
 struct KnucklesCharObj2
 {
 	CharObj2Base base;
-	char field_1BC[560];
+	char field_1BC[40];
+	NJS_POINT3 righthand_vec;
+	NJS_POINT3 lefthand_vec;
+	NJS_POINT3 rightfoot_vec;
+	NJS_POINT3 leftfoot_vec;
+	NJS_POINT3 head_vec0;
+	NJS_POINT3 head_vec1;
+	NJS_POINT3 bodycenter_vec;
+	char field_23C[48];
+	NJS_POINT3 righthand_pos0;
+	NJS_POINT3 lefthand_pos0;
+	NJS_POINT3 righthand_pos1;
+	NJS_POINT3 lefthand_pos1;
+	NJS_POINT3 rightfoot_pos;
+	NJS_POINT3 leftfoot_pos;
+	NJS_POINT3 head0_pos;
+	NJS_POINT3 head1_pos;
+	NJS_POINT3 bodycenter_pos;
+	char field_2D8[214];
+	__int16 WingAction;
+	int WingAnimID;
+	float DigPos;
+	float WingFloat;
+	char field_3BC[4];
+	NJS_VECTOR SomeVector;
+	NJS_VECTOR TorsoJigglePos;
+	NJS_VECTOR HeadJigglePos;
+	JiggleInfo* HeadJiggle;
+	JiggleInfo* LowerTorsoJiggle;
+	JiggleInfo* UpperTorsoJiggle;
 	NJS_TEXLIST *TextureList;
 	NJS_TEXLIST *EffectTextureList;
 	ModelIndex *ModelList;
 	AnimationIndex *MotionList;
-	char field_400[32];
+	NJS_MOTION *WingMotion;
+	char field_404[12];
+	NJS_MOTION *WingShapeMotion;
+	char field_414[12];
 };
 
 struct EggmanCharObj2
 {
 	CharObj2Base base;
-	char field_1BC[416];
+	char field_1BC[40];
+	NJS_POINT3 righthand_vec;
+	NJS_POINT3 lefthand_vec;
+	NJS_POINT3 rightfoot_vec;
+	NJS_POINT3 leftfoot_vec;
+	NJS_POINT3 head_vec0;
+	NJS_POINT3 head_vec1;
+	NJS_POINT3 bodycenter_vec;
+	char field_23C[48];
+	NJS_POINT3 righthand_pos0;
+	NJS_POINT3 lefthand_pos0;
+	NJS_POINT3 righthand_pos1;
+	NJS_POINT3 lefthand_pos1;
+	NJS_POINT3 rightfoot_pos;
+	NJS_POINT3 leftfoot_pos;
+	NJS_POINT3 head0_pos;
+	NJS_POINT3 head1_pos;
+	NJS_POINT3 bodycenter_pos;
+	char field_2D8[136];
 	NJS_TEXLIST *TextureList;
 	ModelIndex *ModelList;
 	AnimationIndex *MotionList;
@@ -1436,26 +1767,30 @@ struct EggmanCharObj2
 struct MechEggmanCharObj2
 {
 	CharObj2Base base;
-	char field_1BC[124];
-	float field_23C;
-	char field_240[4];
-	float field_244;
-	int field_248;
-	char field_24C[8];
-	float field_254;
-	float field_258;
-	float field_25C;
-	char field_260[120];
-	float field_2D8;
-	float field_2DC;
-	float field_2E0;
-	float field_2E4;
-	float field_2E8;
-	float field_2EC;
-	float field_2F0;
-	float field_2F4;
-	float field_2F8;
-	char field_2FC[96];
+	char field_1BC[40];
+	NJS_POINT3 meleeweapon_vec;
+	char field_1F4[12];
+	NJS_POINT3 rightfoot_vec;
+	NJS_POINT3 leftfoot_vec;
+	NJS_POINT3 mechtorsotop0_vec;
+	char field_224[12];
+	NJS_POINT3 mechtorsobottom_vec;
+	NJS_POINT3 blasterbarrel_vec;
+	NJS_POINT3 shot_vec;
+	NJS_POINT3 lockonlaser_vec;
+	NJS_POINT3 mechtorsotop1_vec;
+	NJS_POINT3 meleeweapon_pos;
+	char field_278[36];
+	NJS_POINT3 rightfoot_pos;
+	NJS_POINT3 leftfoot_pos;
+	NJS_POINT3 mechtorsotop0_pos;
+	char field_2C0[12];
+	NJS_POINT3 mechtorsobottom_pos;
+	NJS_POINT3 blasterbarrel_pos;
+	NJS_POINT3 shot_pos;
+	NJS_POINT3 lockonlaser_pos;
+	NJS_POINT3 mechtorsotop1_pos;
+	char field_308[84];
 	char field_35C;
 	char field_35D;
 	char field_35E;
@@ -1469,20 +1804,27 @@ struct MechEggmanCharObj2
 	__int16 field_36C;
 	__int16 field_36E;
 	char field_370[4];
-	float field_374;
-	char field_378[8];
+	float rockettimer;
+	float field_378;
+	char field_37C[4];
 	int field_380;
 	char field_384[12];
 	float field_390;
 	float field_394;
 	float field_398;
 	int field_39C;
-	char field_3A0[132];
-	int field_424;
-	int field_428;
-	int field_42C;
-	int field_430;
-	int field_434;
+	NJS_POINT3 rockets_pos;
+	char field_3AC[60];
+	NJS_POINT3 rockets_vec;
+	NJS_POINT3 leftcalf_vec;
+	NJS_POINT3 rightcalf_vec;
+	NJS_POINT3 leftcalf_pos;
+	NJS_POINT3 rightcalf_pos;
+	Angle BlasterAimAngle;
+	Angle MechTorsoTopAimAngle;
+	int LaserBlasterPulse;
+	int CannonUpgradeRecoil;
+	int BlasterBarrelRecoil;
 	float field_438;
 	float field_43C;
 	float field_440;
@@ -1495,85 +1837,551 @@ struct MechEggmanCharObj2
 struct TailsCharObj2
 {
 	CharObj2Base base;
-	char field_1BC[496];
-	NJS_TEXLIST *TextureList;
-	ModelIndex *ModelList;
-	AnimationIndex *MotionList;
-	char field_3BC[36];
+	char field_1BC[40];
+	NJS_POINT3 righthand_pos;
+	NJS_POINT3 lefthand_pos;
+	NJS_POINT3 rightfoot_pos;
+	NJS_POINT3 leftfoot_pos;
+	NJS_POINT3 head0_pos;
+	NJS_POINT3 head1_pos;
+	NJS_POINT3 head2_pos;
+	NJS_POINT3 tailnode_pos;
+	char field_2BC[36];
+	NJS_POINT3 righthand_vec0;
+	NJS_POINT3 lefthand_vec0;
+	NJS_POINT3 righthand_vec1;
+	NJS_POINT3 lefthand_vec1;
+	NJS_POINT3 rightfoot_vec;
+	NJS_POINT3 leftfoot_vec;
+	NJS_POINT3 head0_vec;
+	NJS_POINT3 head1_vec;
+	NJS_POINT3 head2_vec;
+	NJS_POINT3 tailnode_vec;
+	char field_3BC[204];
+	NJS_TEXLIST* TextureList;
+	ModelIndex* ModelList;
+	AnimationIndex* MotionList;
+	char field_4BC[36];
 };
 
 struct SuperSonicCharObj2
 {
 	CharObj2Base base;
-	char field_1BC[432];
+	char field_1BC[40];
+	NJS_POINT3 righthand_vec;
+	NJS_POINT3 lefthand_vec;
+	NJS_POINT3 rightfoot_vec;
+	NJS_POINT3 leftfoot_vec;
+	NJS_POINT3 head_vec0;
+	NJS_POINT3 head_vec1;
+	NJS_POINT3 bodycenter_vec;
+	char field_23C[48];
+	NJS_POINT3 righthand_pos0;
+	NJS_POINT3 lefthand_pos0;
+	NJS_POINT3 righthand_pos1;
+	NJS_POINT3 lefthand_pos1;
+	NJS_POINT3 rightfoot_pos;
+	NJS_POINT3 leftfoot_pos;
+	NJS_POINT3 head0_pos;
+	NJS_POINT3 head1_pos;
+	NJS_POINT3 bodycenter_pos;
+	char field_2D8[136];
+	NJS_VECTOR SpineJigglePos;
+	JiggleInfo *SpineJiggle;
 	NJS_TEXLIST *TextureList;
 	ModelIndex *ModelList;
 	AnimationIndex *MotionList;
 };
 
-struct EnemyField38
+// Raycast hit information
+struct xssunit
 {
-	float f0;
-	char field_4[24];
-	int field_1C;
-	char field_20[36];
-	uint8_t byte44;
-	uint8_t byte45;
-	char field_46;
-	char field_47;
-	__int16 field_48;
-	__int16 field_4A;
-	uint16_t word4C;
-	uint8_t f4E[6];
-	float float54;
-	float dword58;
-	float dword5C;
-	float dword60;
-	char f64[52];
-	float field_98;
-	char field_9C[36];
-	float floatC0;
-	uint8_t fC4[4];
-	float floatC8;
-	float floatCC;
-	float floatD0;
-	float floatD4;
-	float floatD8;
-	float floatDC;
-	float floatE0;
-	float floatE4;
-	uint32_t dwordE8;
-	float fEC;
-	float field_F0;
-	char field_F4[208];
-	int field_1C4;
-	uint32_t dword1C8;
-	uint8_t f1CC[8];
-	uint32_t dword1D4;
-	float float1D8;
-	float float1DC;
-	int field_1E0;
-	char field_1E4[15];
-	char field_1F3;
-	char field_1F4[4];
-	int field_1F8;
-	int field_1FC;
-	char field_200[16];
+	Sint32 findflag;
+	Sint32 objatt;
+	Angle angx;
+	Angle angz;
+	Float onpos;
+	NJS_POINT3 normal;
+};
+
+// Raycast header for vertical search
+struct zxsdwstr
+{
+	NJS_POINT3 pos;
+	xssunit lower;
+	xssunit upper;
+};
+
+// Raycast header for 6 directions (GetShadowPosXYZ, GetShadowPosXYZonWater)
+struct xyyzzxsdwstr
+{
+	NJS_POINT3 pos;
+	xssunit hit[6];
+};
+
+// Animation set information for enemies
+struct EnemyActionTable
+{
+	NJS_ACTION* actptr;
+	Sint16 mtnmode;
+	Sint16 next;
+	Float frame;
+	Float racio;
+};
+
+// Struct for the enemy animation system, used in EnemySetMotion
+struct EnemyMotionData
+{
+	Float nframe;
+	int unk02;
+	Float start_frame;
+	int unk04;
+	Sint8 mtnmode;
+	Sint8 flag;
+	Sint8 action;                // Current animation
+	Sint8 reqaction;
+	Sint8 lastaction;
+	Sint8 nextaction;
+	Sint16 unk16;
+	EnemyActionTable* plactptr;  // Animation table
+	NJS_OBJECT* objp;            // Model to use for drawing
+	NJS_ACTION* actwkptr;        // Use this when mtnmode is 2, otherwise use plactptr[action].actptr to retrieve the action
+	NJS_ACTION* prev_actptr;
+	Float prev_nframe;
+	Float prev_start_frame;
+	int unk30;
+};
+
+// Main enemy data, allocated with EnemyInitialize
+struct EnemyData
+{
+	NJS_POINT3 velo; // Movement vector, can be altered by enemy collision subs like EnemyCheckWall
+	NJS_POINT3 acc;
+	int unk18;
+	int unk1C;
+	int unk20;
+	int unk24;
+	int unk28;
+	int unk2C;
+	int unk30;
+	int unk34;
+	int unk38;
+	int unk3C;
+	int unk40;
+	Sint8 pnum; // To store player ID when needed
+	Sint8 itemid; // Switch or emerald ID
+	Sint8 unk46[2];
+	__int16 unk48[2];
+	Sint16 flag; // see E_FLAG enum
+	Sint16 unk4E;
+	int unk50;
+	Float unk54;
+	NJS_POINT3 home; // Start position, automatically set by EnemyInitialize
+	NJS_POINT3 aim; // Custom target position
+	NJS_POINT3 unk70;
+	NJS_POINT3 pre; // Previsious position
+	NJS_POINT3 force;
+	NJS_POINT3 unk94;
+	NJS_POINT3 norm; // Floor normal
+	int unkAC;
+	int unkBO;
+	int unkB4;
+	int unkB8;
+	NJS_POINT3 colli_center; // Center offset
+	Float colli_top; // Height
+	Float colli_radius; // Radius
+	Float colli_bottom; // Y offset
+	Float cliff_height;
+	Float bound_side; // Wall "bounce"
+	Float bound_floor; // Floor "bounce"
+	Float bound_friction; // Ground friction
+	Float bound_ceiling; // Ceiling "bounce"
+	Angle bound_add_angle; // Speed to turn at when enemy hits a wall
+	Float shadow_scl; // For DC shadows
+	Float shadow_scl_ratio; // For DC shadows
+	xyyzzxsdwstr shadow; // Contains raycasting information
+	Float buyoscale; // Distortion effect scalor
+	Angle angx_spd; // X angle speed
+	Angle angy_spd; // Y angle speed (used by EnemyTurnTo functions)
+	Angle angz_spd; // Z angle speed
+	Angle aim_angle; // Destination angle (used by EnemyTurnTo functions)
+	Angle view_angle; // Field of view of enemy (used by EnemySearchPlayer)
+	Float view_range; // View distance (used by EnemySearchPlayer)
+	Float hear_range; // View distance unaffected by field of view (used by EnemySearchPlayer)
+	EnemyMotionData motiondata; // For EnemySetMotion, pobj and plactptr necessary
+};
+
+struct TextureAnimData
+{
+	int Type;
+	int SpeedControls;
+	int SpeedDivider;
+	float* field_C;
+	short* UVData;
+	short* field_14;
+	short* field_18;
+	NJS_CNK_MODEL* field_1C;
+	short field_20;
+	short field_22;
+};
+
+struct ModelTextureAnimationArray1
+{
+	NJS_OBJECT* Model;
+	TextureAnimData* texanim;
+	int field_8;
+};
+
+struct ModelTextureAnimationArray2
+{
+	int Type;
+	NJS_OBJECT* Model;
+	TextureAnimData* texanim;
+	int field_C;
+	int field_10;
+};
+
+struct ModelTextureAnimationArray3
+{
+	NJS_OBJECT* Model;
+	TextureAnimData* texanim;
+	int field_8;
+	int field_C;
+};
+
+struct CutsceneTexAnimIDs
+{
+	int TexID;
+	int	TexLoopNumber;
+};
+
+struct UVEditEntry
+{
+	void    *UVAddress;
+	NJS_TEX	UV;
+};
+
+struct EventTexAnim
+{
+	int			 TexID;
+	void		 *PolyMaterial;
+	int			 UVEditCount;
+	UVEditEntry	 *UVEdits;
+};
+
+struct CutsceneTexAnimMain
+{
+	NJS_OBJECT		*Model;
+	int				AnimCount;
+	EventTexAnim	*Data;
+};
+
+struct CutsceneTexAnim
+{
+	CutsceneTexAnimMain	*Data;
+	CutsceneTexAnimIDs	*TexID;
+	int					DataCount;
+};
+
+struct UpgradeListData
+{
+	NJS_OBJECT	*RootModel;
+	NJS_OBJECT	*Upgrade1Attach;
+	NJS_OBJECT  *Upgrade1Model;
+	NJS_OBJECT	*Upgrade2Attach;
+	NJS_OBJECT	*Upgrade2Model;
+};
+
+struct UpgradeList
+{
+	UpgradeListData Data[18];
+};
+
+struct UpgradeOverrideList
+{
+	NJS_OBJECT	*Upgrade1[31];
+	NJS_OBJECT	*Upgrade2[31];
+	NJS_OBJECT	*NormalModel[31];
+};
+
+struct BlurModels
+{
+	NJS_OBJECT	*models[64];
+};
+
+struct ReflectPlane
+{
+	NJS_POINT3 points[4];
+};
+
+struct ReflectionData
+{
+	int				DataSets;
+	int				Transparency[32];
+	ReflectPlane	*ReflectionPlane;
+};
+
+struct BigCameoData
+{
+	NJS_OBJECT	*Model;
+	NJS_MOTION	**AnimationArray;
+	int			AnimationCount;
+	int			Unk;
+};
+
+struct CutsceneEntityData
+{
+	NJS_OBJECT		*Model;
+	NJS_MOTION		*Animation;
+	NJS_MOTION		*ShapeMotion;
+	NJS_OBJECT		*GCModel;
+	NJS_OBJECT		*ShadowModel;
+	TextureAnimData *Texanim;
+	NJS_POINT3		Position;
+	int				Flags;
+	int				DisplayLayer;
+};
+
+struct CutsceneAssetArray
+{
+	CutsceneEntityData  *entity;
+	int					entityCount;
+	NJS_MOTION			*cameraArray;
+	int					cameraArrayCount;
+	NJS_MOTION			*particleMotionArray;
+	int					particleMotionCount;
+	BigCameoData		*bigCameo;
+	Uint32				frameCount;
 };
 
 struct EventFileHeader
 {
-	void *field_0;
-	NJS_TEXLIST *field_4;
-	int field_8;
-	void *field_C;
-	void *field_10;
-	void *field_14;
-	void *field_18;
-	NJS_OBJECT **field_1C;
-	void *field_20;
-	void *field_24;
-	int field_28;
+	CutsceneAssetArray	*assets;
+	NJS_TEXLIST			*texlist;
+	int					sceneCount;
+	void				*texDimensions;
+	ReflectionData		*reflectionData;
+	BlurModels			*blurModels;
+	UpgradeOverrideList *upgradeOverrideList;
+	NJS_OBJECT			**tailsTails;
+	UpgradeList			*upgradeList;
+	CutsceneTexAnim		*texanimData;
+	int					shadowControl;
+};
+struct EventParticlePulse
+{
+	int scale;
+	int speed;
+};
+struct EventParticleAnimControl
+{
+	EventParticlePulse* data;
+	int count;
+};
+
+struct EventSubtitleData
+{
+	int FrameStart;
+	int VisibleTime;
+};
+
+struct EventAudioData
+{
+	int FrameStart;
+	char SFXInit;
+	char CreditsControl;
+	__int16 VoiceID;
+	char MusicName[16];
+	char JingleName[16];
+	char field_28[32];
+};
+
+struct EventScreenEffectData
+{
+	int FrameStart;
+	char Type;
+	char field_5[3];
+	NJS_COLOR Color;
+	char Fade;
+	char field_D;
+	__int16 TexID;
+	int VisibleTime;
+	__int16 PosX;
+	__int16 PosY;
+	float Width;
+	float Height;
+	char field_20[32];
+};
+
+struct EventParticleData
+{
+	int FrameStart;
+	char Type;
+	char MotionID;
+	__int16 field_6;
+	float Setting1;
+	float Setting2;
+	float Setting3;
+	float Setting4;
+	char field_18[32];
+};
+
+struct EventLightingData
+{
+	int FrameStart;
+	int Type;
+	NJS_VECTOR Direction;
+	NJS_VECTOR Color;
+	float Intensity;
+	NJS_VECTOR AmbientColor;
+	char field_30[20];
+};
+
+struct EventBlurData
+{
+	int FrameStart;
+	int Duration;
+	char ModelIDs[6];
+	__int16 field_E;
+	int Instances;
+	char field_14[44];
+};
+
+struct EventParticleGeneratorData
+{
+	NJS_VECTOR Position;
+	NJS_VECTOR field_C;
+	__int16 field_18[4];
+	int FrameStart;
+	NJS_VECTOR Spread;
+	int Count;
+	int field_34;
+	int Type;
+	int field_3C;
+};
+
+struct EventVideoData
+{
+	int FrameStart;
+	__int16 PosX;
+	__int16 PosY;
+	float Depth;
+	char OverlayType;
+	char OverlayTexID;
+	__int16 field_E;
+	char VideoName[48];
+};
+
+struct EventEffectData
+{
+	EventSubtitleData subtitles[256];
+	EventAudioData audio[512];
+	EventScreenEffectData screeneffects[64];
+	EventParticleData particles[2048];
+	EventLightingData lighting[1024];
+	EventBlurData blur[64];
+	EventParticleGeneratorData particlegen[64];
+	EventVideoData video[64];
+};
+
+struct MiniEventParts
+{
+	NJS_OBJECT* Part;
+	NJS_MOTION* PartAnimation;
+	NJS_MOTION* PartShapeMotion;
+};
+
+struct MiniEventAssets
+{
+	NJS_MOTION* BodyAnimation;
+	MiniEventParts Data[4];
+};
+
+struct MiniEventFile
+{
+	int Flags;
+	NJS_MOTION *Camera;
+	MiniEventAssets* Assets[8];
+};
+
+struct MiniEventEffects
+{
+	int FrameStart;
+	char FadeType;
+	char SFXEntry1;
+	char SFXEntry2;
+	char field_7;
+	__int16 VoiceID;
+	char MusicData[16];
+	char JingleData[16];
+	__int16 field_2A;
+	int RumbleControl;
+	char field_30[28];
+};
+
+struct MiniEventEffectFile
+{
+	EventSubtitleData subtitles[32];
+	MiniEventEffects effects[64];
+	NJS_VECTOR field_1400;
+	float field_140C;
+	NJS_VECTOR field_1410;
+};
+
+struct TailsPlainFile
+{
+	NJS_TEXLIST* Texlist;
+	NJS_OBJECT* Model;
+	NJS_MOTION* Motion;
+	NJS_MOTION* Camera;
+};
+
+struct CutsceneVoices
+{
+	Uint32 InternalID;
+	int	   VoiceFileID;
+};
+
+struct SummaryData
+{
+	int StringID;
+	int VoiceID;
+	int JPNFrameStart;
+	int ENGFrameStart;
+	int FRNFrameStart;
+	int SPAFrameStart;
+	int GERFrameStart;
+	int ITAFrameStart;
+};
+
+struct SummaryDataArray
+{
+	int StoryType;
+	int StorySequenceID;
+	int BackgroundID;
+	SummaryData* Data;
+	int DataCount;
+};
+
+struct MenuVoices
+{
+	int Default;
+	int Shadow;
+	int Rouge;
+	int Eggman;
+	int Maria;
+	int Secretary;
+	int Omochao;
+	int Amy;
+	int Tails;
+	int Knuckles;
+	int Sonic;
+};
+
+struct ActionWindowTextArray
+{
+	int Action;
+	int TextID;
 };
 
 struct ControlShadowCharObj2
@@ -1660,6 +2468,22 @@ struct PDS_PERIPHERAL
 	PDS_PERIPHERALINFO *info;
 };
 
+struct PDS_KEYBOARDINFO
+{
+	unsigned __int8 lang;
+	unsigned __int8 type;
+	unsigned __int8 led;
+	unsigned __int8 led_ctrl;
+};
+
+struct PDS_KEYBOARD
+{
+	unsigned __int8 ctrl;
+	unsigned __int8 led;
+	unsigned __int8 key[6];
+	PDS_KEYBOARDINFO* info;
+};
+
 struct ButtonMapping
 {
 	int XInput;
@@ -1712,6 +2536,24 @@ struct PDS_BASE
 	int field_30;
 };
 
+struct LightData
+{
+	NJS_VECTOR direction;
+	float intensity;
+	float ambient;
+	NJS_VECTOR color;
+};
+
+struct LightGCData
+{
+	NJS_VECTOR direction;
+	NJS_VECTOR color;
+	NJS_VECTOR ambient;
+	int flags;
+	int field_28;
+	int field_2C;
+};
+
 struct FogData
 {
 	int flags;
@@ -1738,80 +2580,6 @@ struct struc_33
 	int field_160;
 	char gap_164[9072];
 	int field_24D4;
-};
-
-struct struc_36
-{
-	char gap_0[20];
-	int field_14;
-	int field_18;
-	int field_1C;
-	float field_20;
-	float field_24;
-	char gap_28[832];
-	int field_368;
-	char gap_36C[636];
-	int field_5E8;
-	int field_5EC;
-	int field_5F0;
-	int field_5F4;
-	int field_5F8;
-	int field_5FC;
-	int field_600;
-	int field_604;
-	char gap_608[24];
-	int field_620;
-	int field_624;
-	int field_628;
-	int field_62C;
-	int field_630;
-	int field_634;
-	int field_638;
-	int field_63C;
-	char gap_640[4];
-	int field_644;
-	int field_648;
-	int field_64C;
-	int field_650;
-	int field_654;
-	int field_658;
-	int field_65C;
-	int field_660;
-	int field_664;
-	int field_668;
-	int field_66C;
-	int field_670;
-	int field_674;
-	int field_678;
-	char gap_67C[27];
-	char field_697;
-};
-
-struct SOCController__vtbl
-{
-	int sub_425440;
-	int sub_4262A0;
-	int sub_425F40;
-	int sub_426010;
-	int sub_4260F0;
-	int sub_426150;
-	int sub_4261D0;
-	int sub_426230;
-	int sub_426320;
-};
-
-struct SOCController
-{
-	SOCController__vtbl *vtable;
-	char gap_4[4];
-	int field_8;
-	int field_12;
-	char field_16;
-	char gap_11[7];
-	__int64 field_24;
-	char gap_20[8];
-	int field_40;
-	int field_2C;
 };
 
 struct SOCControllerAll__vtbl
@@ -1843,13 +2611,6 @@ struct SOCControllerAll
 	int field_2C;
 	int field_30;
 	int field_34;
-};
-
-struct DebugFunction
-{
-	void(__cdecl *Function)(void *_this);
-	int Enabled;
-	const char *Name;
 };
 
 struct ChaoUnknownC
@@ -1970,6 +2731,13 @@ struct MenuData
 	int field_10;
 	int field_14;
 	int field_18;
+};
+
+struct RewardScreen
+{
+	int* stringIDs;
+	int stringCount;
+	int congratulationsCheck;
 };
 
 struct DispWinnerAndContinue_Data
@@ -2139,6 +2907,24 @@ struct CharaObjectData
 	float anonymous_13;
 };
 
+struct VersusIntroData
+{
+	int IntroAnimID;
+	NJS_MOTION* IntroCamera;
+	float field_8;
+	int NeutralIntroVoice;
+	int WinningIntroVoice;
+	int LosingIntroVoice;
+};
+
+struct IdleVoiceArray
+{
+	char Character;
+	char Level;
+	__int16 Voice1;
+	__int16 Voice2;
+};
+
 struct KartSpecialInfo
 {
 	int ID;
@@ -2148,6 +2934,80 @@ struct KartSpecialInfo
 	int Unknown1;
 	int Unknown2;
 	int Unknown3;
+};
+
+struct KartMenu
+{
+	int CharacterID;
+	int PortraitID;
+	NJS_OBJECT* KartModel;
+	char SPD;
+	char ACL;
+	char BRK;
+	char GRP;
+};
+
+struct KartSFXAndShadows
+{
+	int EngineSFX;
+	int BrakeSFX;
+	int FinishVoice;
+	int FirstVoice;
+	int LastVoice;
+	NJS_OBJECT* ShadowModel;
+};
+
+struct CartStreetLightPos
+{
+	NJS_VECTOR Position;
+	int YRotation;
+};
+
+struct CartCourseModelInfo
+{
+	NJS_OBJECT* Model;
+	NJS_OBJECT* Collision;
+	NJS_VECTOR EndPoint;
+	int YRotation;
+	char field_18[76];
+	CartStreetLightPos* StreetLights;
+	int StreetLightCount;
+};
+
+struct KartCourse
+{
+	char* Course;
+	int Length;
+};
+
+struct KartPhysics
+{
+	float Acceleration;
+	float BrakePower;
+	float Deceleration;
+	float SpeedCap;
+	float Weight;
+	float Unk1;
+	float DriftHandling;
+	float DriftSpeedThreshold;
+	float Unk2;
+	float TopSpeed;
+};
+
+struct KartCPUStats
+{
+	float speed;
+	float variance;
+	float aggression;
+};
+
+struct KartDownloadData
+{
+	KartPhysics downloadPhysics;
+	KartCPUStats CPUDownloadStats;
+	KartCPUStats CPUNormalStats;
+	int field_40;
+	char MusicTrack;
 };
 
 struct ChaoMotionTableEntry
@@ -2161,27 +3021,104 @@ struct ChaoMotionTableEntry
 	float PlaySpeed;
 };
 
-// Camera information for one screen, see CameraScreensInfoArray.
-struct CameraScreenInfo {
-	NJS_VECTOR pos;
-	Rotation rot;
+struct _OBJ_CAMERAMODE
+{
+	const char* name;
+	CameraFuncPtr fnCamera;
+	int mode;
 };
 
+struct _OBJ_CAMERAADJUST
+{
+	const char* name;
+	CameraFuncPtr fnAdjust;
+};
+
+// Information for motion cameras, see SetMotionCamera
+struct CameraMotion
+{
+	float speed;
+	Angle angy;
+	NJS_MOTION* mtn;
+	NJS_POINT3* pos;
+	int flag;
+	void* endcallback;
+};
+
+// Data for the camera collision system
+struct CameraColliInfo
+{
+	NJS_POINT3 current_pos;
+	NJS_POINT3 next_pos;
+	int flag_mask;
+	float float_1C;
+	NJS_POINT3 output_pos;
+	char gap2C[220];
+	NJS_POINT3 dir;
+	char gap114[36];
+	int field_138;
+};
+
+// Drawing view information
+struct CameraViewInfo
+{
+	NJS_POINT3 pos;
+	NJS_POINT3 dir;
+	Angle roll;
+	Angle fov;
+	float unknown;
+};
+
+// Camera location information
+struct CameraLocation
+{
+	NJS_POINT3 pos;
+	Angle3 ang;
+	NJS_POINT3 dir;
+	NJS_POINT3 tgt;
+	NJS_POINT3 diff; // difference with previous position
+	float spd;
+};
+
+// Free space for camera subtasks
+struct CameraWork
+{
+	char gap[256];
+};
+
+// Camera subtask information
+struct CameraParam
+{
+	int mode;
+	int field_4;
+	unsigned int ulTimer;
+	CameraFuncPtr pObjCameraMode;
+	int field_10;
+	CameraWork work;
+};
+
+// Main camera task information
 struct CameraInfo
 {
-	int field_0;
-	int field_4;
-	int field_8;
-	char gapC[328];
-	float field_154;
-	float field_158;
-	float field_15C;
-	int field_160;
-	char gap164[48];
-	NJS_VECTOR Position;
-	Rotation Rotation;
-	char gap1AC[9000];
-	int field_24D4;
+	Angle fov_current;
+	Angle fov_target;
+	Angle fov_spd;
+	BOOL analog_control;
+	BOOL Player_stop_flag;
+	int field_14;
+	CameraColliInfo colliwk;
+	NJS_POINT3 shake_offset;
+	int shake_mode;
+	int shake_timer;
+	float shake_magnitude;
+	CameraViewInfo view;
+	int field_190;
+	CameraLocation location;
+	CameraLocation oldLocation;
+	CameraLocation oldLocation_; // this one is set before it runs collisions
+	int currentCameraSlot; // current slot for cameraModes & cameraAdjusts
+	CameraParam cameraModes[16];
+	CameraParam cameraAdjusts[16];
 };
 
 // Additional object data for path controllers.
@@ -2307,48 +3244,11 @@ struct PolygonPoint {
 	NJS_COLOR color;
 };
 
-// Physics struct from SADX symbols
-struct player_parameter {
-	int jump2_timer;
-	float pos_error;
-	float lim_h_spd;
-	float lim_v_spd;
-	float max_x_spd;
-	float max_psh_spd;
-	float jmp_y_spd;
-	float nocon_speed;
-	float slide_speed;
-	float jog_speed;
-	float run_speed;
-	float rush_speed;
-	float crash_speed;
-	float dash_speed;
-	float jmp_addit;
-	float run_accel;
-	float air_accel;
-	float slow_down;
-	float run_break;
-	float air_break;
-	float air_resist_air;
-	float air_resist;
-	float air_resist_y;
-	float air_resist_z;
-	float grd_frict;
-	float grd_frict_z;
-	float lim_frict;
-	float rat_bound;
-	float rad;
-	float height;
-	float weight;
-	float eyes_height;
-	float center_height;
-};
-
 struct RenderInfo
 {
 	char gap0[8];
-	int texparplus4;
-	int unknown1;
+	void* TextureData;
+	Uint32 attrflags;             /* Ninja attributes from NJS_MATERIAL */
 	int unknown2;
 	int texparbuf;
 	int unknown3;
@@ -2469,10 +3369,591 @@ struct SoundSystem
 	MLTSoundList MLTSoundLists[8];
 };
 
-struct __declspec(align(2)) HomingAttackTarget
+struct HomingAttackTarget
 {
 	EntityData1* entity;
 	float distance;
+};
+
+struct Light
+{
+	NJS_VECTOR direction;
+	float intensity;
+	float ambient;
+	NJS_VECTOR color;
+};
+
+struct LightGC
+{
+	NJS_VECTOR direction;
+	NJS_VECTOR lightColor;
+	NJS_VECTOR ambientReg;
+	int flags;
+	int unused;
+	int unk;
+};
+
+struct CHAO_ID
+{
+	int gid[2];
+	int id[2];
+	int num;
+};
+
+struct AL_BODY_INFO
+{
+	float HPos; // Run : Power Align
+	float VPos; // Swim : Fly Align
+	float APos; // Dark : Hero Align
+	float AimHPos; // Last Run : Power
+	float AimVPos; // Last Swim : Fly
+	float AimAPos; // Last Alignment
+	float growth; // Magitude
+	float EyePos;
+	float EyeScl;
+	float EyeRatio;
+	Sint8 EyeColor;
+	Sint8 DefaultEyeNum;
+	eAL_MOUTH_NUM DefaultMouthNum;
+	eCHAO_ICON HonbuNum; // Icon type
+	Sint8 HonbuColorNum; // Inert
+	eCHAO_MASK ObakeHead; // Hat / Mask
+	eBODY_PARTS ObakeBody; // Hide Feet
+	eMEDAL_PARTS MedalNum;
+	eAL_COLOR ColorNum;
+	bool NonTex; // isMonotone
+	eCHAO_JEWEL JewelNum;
+	Sint8 MultiNum; // Shiny
+	eCHAO_EGGS EggColor;
+	eCHAO_BODYTYPE FormNum;
+	Sint8 FormSubNum; // Animal
+	Sint8 UNDEF0;
+};
+
+struct AL_TIME
+{
+	Sint8 minute;
+	Sint8 second;
+	Sint8 frame;
+};
+
+struct AL_RACE_PERSONAL_INFO
+{
+	AL_TIME PersonalRecord[10];
+	Sint8 nbWin[10];
+	short MedalFlag;
+};
+
+struct AL_KARATE_PERSONAL_INFO
+{
+	Sint8 rank;
+	Sint8 level;
+	Sint8 tournament;
+	Sint8 UNDEF0;
+	short nbBattle;
+	short nbWin;
+	short nbLose;
+	short nbDraw;
+};
+
+struct AL_PARTS
+{
+	int MinimalFlag;
+	eCHAO_MINIMALS MinimalParts[8];
+};
+
+struct AL_EMOTION
+{
+	short Flag;
+	short MoodTimer;
+	short IllTimer;
+	short Timer;
+	Sint8 Mood[8];
+	short State[11];
+	Sint8 Personality[13];
+	Sint8 Taste;
+	Sint8 Tv;
+	Sint8 Music;
+	Sint8 IllState[6];
+};
+
+struct AL_KNOWLEDGE_PLAYER
+{
+	Uint8 like;
+	Sint8 fear;
+	short distance;
+	short meet;
+};
+
+struct AL_KNOWLEDGE_CHAO
+{
+	CHAO_ID id;
+	Uint8 like;
+	Sint8 fear;
+	short distance;
+	short meet;
+	Sint8 UNDEF0;
+	Sint8 UNDEF1;
+};
+
+struct AL_KNOWLEDGE_OTHER
+{
+	Uint8 like;
+};
+
+struct AL_KNOWLEDGE_BTL
+{
+	Sint8 ArtFlag;
+	Sint8 DanceFlag;
+	Sint8 SongFlag;
+	Sint8 MusicFlag;
+	short SToyFlag;
+	short LToyFlag;
+	int KwTimer;
+	AL_KNOWLEDGE_PLAYER player[6];
+	AL_KNOWLEDGE_CHAO chao[20];
+	AL_KNOWLEDGE_OTHER bhv[120];
+};
+
+struct AL_GENE
+{
+	bool IsAnalyzed;
+	eCHAO_EGGS EggColor;
+	Sint8 UNDEF0;
+	Sint8 UNDEF1;
+	CHAO_ID MotherID;
+	CHAO_ID FatherID;
+	char MotherName[8];
+	char FatherName[8];
+	char MGroundMotherName[8];
+	char MGroundFatherName[8];
+	char FGroundMotherName[8];
+	char FGroundFatherName[8];
+	Sint8 Abl[16];
+	Sint8 LifeTime[2];
+	Sint8 HPos[2];
+	Sint8 VPos[2];
+	Sint8 APos[2];
+	Sint8 Personality[2][13];
+	Sint8 Taste[2];
+	Sint8 Tv[2];
+	Sint8 Music[2];
+	eAL_COLOR Color[2];
+	bool NonTex[2]; // Monotone
+	eCHAO_JEWEL Jewel[2];
+	Sint8 Multi[2]; // Shiny
+	Sint8 EyePos[2];
+	Sint8 EyeScl[2];
+	Sint8 EyeRatio[2];
+	Sint8 EyeColor[2];
+};
+
+struct AL_RACE_PERSONAL_INFO_DX
+{
+	AL_TIME PersonalRecord[5];
+};
+
+struct AL_KNOWLEDGE_DX
+{
+	AL_KNOWLEDGE_PLAYER player[6];
+};
+
+struct CHAO_PARAM_GC
+{
+	Sint8 GBAChao;
+	Sint8 GBAEgg;
+	Sint8 GBABerry[8];
+	Sint8 padding0;
+	Sint8 padding1;
+	int GBARing; // Rings moving from GBA -> GCN
+	Sint8 BootMethed;
+	Sint8 Birthplace;
+	char name[7];
+	Sint8 GBAType;
+	Sint8 GBASkin;
+	Sint8 GBAMood;
+	Sint8 GBABelly;
+	Sint8 GBASleepy;
+	Sint8 GBALonelyness;
+	Sint8 padding2;
+	Sint8 Exp[8]; // Progress 0 - 100
+	Sint8 Abl[8]; // Grade E - S
+	Sint8 Lev[8]; // Level 0 - 99
+	short Skill[8]; // Total Points
+	short GBAPallete[16];
+	Sint8 rmsg[16];
+	int runaway;
+	Sint8 dummy[4];
+	eCHAO_TYPE type;  // Chao Type
+	eCHAO_GARDENS place; // Chao Area
+	signed short like; // Happiness
+	Sint8 ClassNum;
+	Sint8 UNDEF0;
+	short age; // total clock rollovers
+	short old; // adult clock rollovers
+	short life; // Liftime1
+	short LifeMax; // Liftime2
+	short nbSucceed; // reincarnations
+	CHAO_ID ChaoID;
+	int LifeTimer;
+	AL_BODY_INFO body;
+	AL_RACE_PERSONAL_INFO race;
+	AL_KARATE_PERSONAL_INFO karate;
+	Sint8 UNDEF1;
+	Sint8 UNDEF2;
+	AL_PARTS PartsBTL;
+	AL_EMOTION emotion;
+	AL_KNOWLEDGE_BTL knowledge;
+	AL_GENE gene;
+};
+
+struct CHAO_SAVE_INFO
+{
+	CHAO_PARAM_GC param;
+	int IsInitializedDX;
+	AL_PARTS partsDX;
+	AL_RACE_PERSONAL_INFO_DX raceDX;
+	Sint8 UNDEF0;
+	AL_KNOWLEDGE_DX knowledgeDX;
+	Sint8 UNDEF1[736];
+};
+
+struct TMP_PARAM
+{
+	Sint8 Exp[8];
+	Sint8 Abl[8];
+	Sint8 Lev[8];
+	short Skills[8];
+};
+
+struct MOTION_INFO
+{
+	short mode;
+	Sint8 UNDEF0;
+	Sint8 UNDEF1;
+	float frame;
+	float start;
+	float end;
+	float spd;
+	void* pMotion;
+};
+
+struct MOTION_CTRL
+{
+	short flag;
+	short posture;
+	int curr_num;
+	int next_num;
+	float multi_spd;
+	float link_spd;
+	float ratio;
+	MOTION_INFO minfo[2];
+	int table;
+};
+
+struct MOTION_TABLE
+{
+	void* pMotion;
+	short mode;
+	short posture;
+	int next;
+	int link_step;
+	float start;
+	float end;
+	float spd;
+};
+
+struct KW_BHV_ENTRY
+{
+	int bhv;
+};
+
+struct AL_BEHAVIOR
+{
+	short Flag;
+	short Mode;
+	short SubMode;
+	short MoveMode;
+	int InterruptFlag;
+	int Timer;
+	int SubTimer;
+	int LimitTimer;
+	int BehaviorTimer;
+	short Intention;
+	short IntentionMode;
+	short IntentionSubMode;
+	Sint8 UNDEF0;
+	Sint8 UNDEF1;
+	int IntentionTimer[18];
+	int IntervalTimer[128];
+	int FreeWork;
+	float MoveRadius;
+	NJS_POINT3 BasePos;
+	void* PrevFunc;
+	int nbBhvFuncEntry;
+	int CurrBhvFuncNum;
+	void* BhvFuncList[16];
+	int ReserveTimerList[16];
+	int CurrKwBhvNum;
+	KW_BHV_ENTRY KwBhvList[4];
+	int dummy[15]; // 16 in SADX
+};
+
+struct AL_SHAPE
+{
+	void* pObject;
+	void* CurrObjectList[40];
+	ChaoEvos* pObjectList;
+	ChaoEvos* pObjectListH;
+	ChaoEvos* pObjectListD;
+	NJS_POINT3 BodyPos;
+	NJS_POINT3 HeadPos;
+	NJS_POINT3 LeftHandPos;
+	NJS_POINT3 RightHandPos;
+	NJS_POINT3 LeftFootPos;
+	NJS_POINT3 RightFootPos;
+	NJS_POINT3 MouthPos;
+	NJS_POINT3 MouthVec;
+	NJS_POINT3 LeftEyePos;
+	NJS_POINT3 LeftEyeVec;
+	NJS_POINT3 RightEyePos;
+	NJS_POINT3 RightEyeVec;
+	NJS_OBJECT* pLeftHandItemObject;
+	NJS_TEXLIST* pLeftHandItemTexlist;
+	float LeftHandItemScale;
+	float LeftHandItemActiveFlag;
+	NJS_OBJECT* pRightHandItemObject;
+	NJS_TEXLIST* pRightHandItemTexlist;
+	float RightHandItemScale;
+	float RightHandItemActiveFlag;
+	int palette;
+	short Flag;
+	short ColorNum;
+	short EnvNum;
+	Sint8 UNDEF0;
+	Sint8 UNDEF1;
+	int IconColor;
+	float SclH;
+	float SclV;
+	float CamDist;
+};
+
+struct AL_FACE_CTRL
+{
+	int EyeTimer;
+	short EyeColorNum;
+	short EyeCurrNum;
+	short EyeDefaultNum;
+	Sint8 UNDEF0;
+	Sint8 UNDEF1;
+	int MouthTimer;
+	short MouthCurrNum;
+	short MouthDefaultNum;
+	float EyePosX;
+	float EyePosY;
+	float EyeSclX;
+	float EyeSclY;
+	int Flag;
+	NJS_CNK_MODEL* pEyeObject[2];
+	NJS_CNK_MODEL* pMouthObject;
+	int EyeLidBlinkMode;
+	int EyeLidBlinkTimer;
+	int EyeLidBlinkAng;
+	int EyeLidExpressionMode;
+	int EyeLidExpressionTimer;
+	int EyeLidExpressionDefaultCloseAng;
+	int EyeLidExpressionCurrCloseAng;
+	int EyeLidExpressionAimCloseAng;
+	int EyeLidExpressionDefaultSlopeAng;
+	int EyeLidExpressionCurrSlopeAng;
+	int EyeLidExpressionAimSlopeAng;
+};
+
+struct AL_ICON_INFO
+{
+	short Mode;
+	short TexNum;
+	short Timer;
+	Sint8 UNDEF0;
+	Sint8 UNDEF1;
+	NJS_POINT3 Offset;
+	NJS_POINT3 Pos;
+	NJS_POINT3 Velo;
+	NJS_POINT3 Scl;
+	NJS_POINT3 SclSpd;
+};
+
+struct AL_ICON
+{
+	short CurrType;
+	short NextType;
+	int Timer;
+	int NextTimer;
+	int PuniPhase;
+	int PosPhase;
+	int Color;
+	short TexAnimNum;
+	short TexAnimTimer;
+	int ang;
+	NJS_POINT3 Up; // HeadPosUnitTransPortion
+	NJS_POINT3 Pos; // parentPosition
+	AL_ICON_INFO Upper;
+	AL_ICON_INFO Lower;
+};
+
+struct AL_ZONE
+{
+	short Flag;
+	short CurrNum;
+	float Ratio;
+	NJS_LINE Plane;
+};
+
+struct al_perception_link
+{
+	short info[4];
+	float dist;
+	int InSightFlag;
+	int HearFlag;
+	int SmellFlag;
+	void* pEntry;
+};
+
+struct AL_PERCEPTION_INFO
+{
+	short nbPerception;
+	Sint8 UNDEF0;
+	Sint8 UNDEF1;
+	int InSightFlag;
+	int HeardFlag;
+	int SmellFlag;
+	float NearestDist;
+	short NearestNum;
+	Sint8 UNDEF2;
+	Sint8 UNDEF3;
+	al_perception_link list[32];
+};
+
+struct AL_PERCEPTION
+{
+	float SightRange;
+	int SightAngle;
+	int SightAngleHalf;
+	float HearRange;
+	float SmellRange;
+	AL_PERCEPTION_INFO Player;
+	AL_PERCEPTION_INFO Chao;
+	AL_PERCEPTION_INFO Fruit;
+	AL_PERCEPTION_INFO Tree;
+	AL_PERCEPTION_INFO Toy;
+	AL_PERCEPTION_INFO Sound;
+};
+
+struct CHAOWK // ChaoData1
+{
+	EntityData1 entity;
+	int Timer;
+	ObjectMaster* pMayu;
+	ObjectMaster* pBookTask;
+	int NestFlag;
+	ObjectMaster* pAnyTask;
+	ObjectMaster* pAimTask;
+	int AimNum;
+	int RememberNum;
+	int pitch;
+	float ClimbFirstPos;
+	int IsParamCopy;
+	CHAO_PARAM_GC* pParamGC;
+	TMP_PARAM tmpParam;
+	int Stamina;
+	int AimStamina;
+	int tp;
+	int pre_ang[3];
+	int ChaoFlag;
+	short ColliFormat;
+	Sint8 UNDEF0;
+	Sint8 UNDEF1;
+	float CurrZone;
+	MOTION_CTRL MotionCtrl;
+	MOTION_CTRL MiniMotionCtrl;
+	MOTION_TABLE MiniMotionTable[4];
+	AL_BEHAVIOR Behavior;
+	AL_SHAPE Shape;
+	AL_FACE_CTRL Face;
+	AL_ICON Icon;
+	AL_ZONE Zone;
+	AL_PERCEPTION Perception;
+	void* pWork;
+};
+
+/* Particle task (allocated) */
+struct sp_task
+{
+	Angle ang;       /* Roll angle */
+	Float scl;       /* Sprite scale */
+	NJS_POINT3 pos;  /* Sprite position */
+	NJS_COLOR color; /* Sprite color */
+	Float frame;     /* The integral part is the texture id, the fractional part is basically a timer */
+	Angle unk;       /* Angle sometimes set by particules, but seemingly unused in drawing function */
+	NJS_POINT3 spd;  /* Velocity */
+	Angle angspd;    /* Roll angle speed */
+	sp_task* next;   /* Next task for current particle info (linked list) */
+	Sint32 flag;     /* Task-specific flag bitfield, see SP_TASK_FLAG enum */
+	Float offset;    /* Offset applied after roll */
+	sp_task* link;   /* Reserved for linked list */
+};
+
+/* Particle information (static) */
+struct sp_info
+{
+	Sint32 flag;                             /* Rendering flags, see SP_FLAG enum */
+	NJS_TEXLIST* texlist;                    /* Texlist to use  */
+	Sint32 texno;                            /* Start texture num */
+	Sint32 animnum;                          /* Number of textures */
+	Float animspd;                           /* Texture animation speed: task->no + animspd */
+	Float hoffset;                           /* X, Y and Z offset */
+	Float voffset;                           /* Y offset */
+	Float sclspd;                            /* Scaling speed: task->spd + sclspd */
+	Bool(__cdecl* exec)(sp_info*, sp_task*); /* Subtask function */
+	Float unk24;
+	const sp_task* cst_task;                 /* Default task parameters (optional) */
+	Sint32 unk2C;
+	sp_task* tasks;                          /* Tasks linked list */
+	sp_info* link;                           /* Reserved for linked list */
+};
+
+typedef motionwk motionwk2;
+
+struct PAKTexInf
+{
+	char filename[28];
+	Uint32 globalIndex;
+	Uint32 Type;
+	Uint32 BitDepth;
+	Uint32 PixelFormat;
+	Uint32 nWidth;
+	Uint32 nHeight;
+	Uint32 TextureSize;
+	Uint32 fSurfaceFlags;
+};
+
+struct CreditsEntry
+{
+    int Type;
+    float A, R, G, B;
+    const char* Text;
+};
+
+struct CreditsList
+{
+	CreditsEntry* Entries;
+	int Count;
+};
+
+struct MenuBackgrounds
+{
+	char* filename;
+	NJS_TEXLIST* texlist;
 };
 
 #pragma pack(pop)
