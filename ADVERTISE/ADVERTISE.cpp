@@ -397,9 +397,9 @@ const char MasterStringListFrench190[] = "Introduction"; /* "Introduction" */
 
 const char MasterStringListFrench191[] = "Entr\351e de Knuckles"; /* "Entrée de Knuckles" */
 
-const char MasterStringListFrench193[] = "\311vasion de Prison Island"; /* "Évasion de Prison Island" */
+const char MasterStringListFrench193[] = "\311vasion de\nPrison Island"; /* "Évasion de Prison Island" */
 
-const char MasterStringListFrench194[] = "Confrontation avec Shadow"; /* "Confrontation avec Shadow" */
+const char MasterStringListFrench194[] = "Confrontation avec\nShadow"; /* "Confrontation avec Shadow" */
 
 const char MasterStringListFrench195[] = "Montagne hant\351e"; /* "Montagne hantée" */
 
@@ -409,15 +409,15 @@ const char MasterStringListFrench197[] = "Mines aquatiques"; /* "Mines aquatique
 
 const char MasterStringListFrench198[] = "O\371 se trouve Eggman ?"; /* "Où se trouve Eggman ?" */
 
-const char MasterStringListFrench199[] = "La base secr\350te d'Eggman"; /* "La base secrète d'Eggman" */
+const char MasterStringListFrench199[] = "La base secr\350te\nd'Eggman"; /* "La base secrète d'Eggman" */
 
-const char MasterStringListFrench200[] = "Confrontation avec le gardien"; /* "Confrontation avec le gardien" */
+const char MasterStringListFrench200[] = "Confrontation avec\nle gardien"; /* "Confrontation avec le gardien" */
 
-const char MasterStringListFrench201[] = "D\351collage de la navette"; /* "Décollage de la navette" */
+const char MasterStringListFrench201[] = "D\351collage de la\nnavette"; /* "Décollage de la navette" */
 
-const char MasterStringListFrench202[] = "Colonie de l'espace ARK"; /* "Colonie de l'espace ARK" */
+const char MasterStringListFrench202[] = "Colonie de l'espace\nARK"; /* "Colonie de l'espace ARK" */
 
-const char MasterStringListFrench203[] = "Derni\350res pi\350ces de l'\311meraude"; /* "Dernières pièces de l'Émeraude" */
+const char MasterStringListFrench203[] = "Derni\350res pi\350ces de\nl'\311meraude"; /* "Dernières pièces de l'Émeraude" */
 
 const char MasterStringListFrench204[] = "Sonic a des probl\350mes"; /* "Sonic a des problèmes" */
 
@@ -425,23 +425,23 @@ const char MasterStringListFrench205[] = "Introduction"; /* "Introduction" */
 
 const char MasterStringListFrench206[] = "Entr\351e de Rouge"; /* "Entrée de Rouge" */
 
-const char MasterStringListFrench207[] = "Encore la base secr\350te !"; /* "Encore la base secrète !" */
+const char MasterStringListFrench207[] = "Encore la base\nsecr\350te !"; /* "Encore la base secrète !" */
 
 const char MasterStringListFrench208[] = "Le pass\351 de Shadow"; /* "Le passé de Shadow" */
 
-const char MasterStringListFrench209[] = "Infiltration de la base secr\350te"; /* "Infiltration de la base secrète" */
+const char MasterStringListFrench209[] = "Infiltration de la\nbase secr\350te"; /* "Infiltration de la base secrète" */
 
-const char MasterStringListFrench210[] = "Rassemblement des vilains"; /* "Rassemblement des vilains" */
+const char MasterStringListFrench210[] = "Rassemblement des\nvilains"; /* "Rassemblement des vilains" */
 
-const char MasterStringListFrench211[] = "Trouver les \311meraudes"; /* "Trouver les Émeraudes" */
+const char MasterStringListFrench211[] = "Trouver les\n\311meraudes"; /* "Trouver les Émeraudes" */
 
-const char MasterStringListFrench212[] = "Confrontation avec Sonic"; /* "Confrontation avec Sonic" */
+const char MasterStringListFrench212[] = "Confrontation avec\nSonic"; /* "Confrontation avec Sonic" */
 
 const char MasterStringListFrench214[] = "La derni\350re \311meraude"; /* "La dernière Émeraude" */
 
-const char MasterStringListFrench215[] = "Emb\373che dans la base secr\350te"; /* "Embûche dans la base secrète" */
+const char MasterStringListFrench215[] = "Emb\373che dans la\nbase secr\350te"; /* "Embûche dans la base secrète" */
 
-const char MasterStringListFrench216[] = "Confrontation avec Knuckles"; /* "Confrontation avec Knuckles" */
+const char MasterStringListFrench216[] = "Confrontation avec\nKnuckles"; /* "Confrontation avec Knuckles" */
 
 const char MasterStringListFrench218[] = "Le secret de Shadow"; /* "Le secret de Shadow" */
 
