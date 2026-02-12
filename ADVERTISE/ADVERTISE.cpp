@@ -463,13 +463,13 @@ const char MasterStringListFrench328[] = "\tBouton B pour revenir \340 l'\351cra
 
 const char MasterStringListFrench329[] = "Je m'appelle Sonic ! Sonic the Hedgehog !"; /* "Je m'appelle Sonic ! Sonic the Hedgehog !" */
 
-const char MasterStringListFrench330[] = "Un myst\351rieux groupe s'est montr\351 assez soudainement.\nOn dirait bien qu'ils veulent m'inviter pour un voyage dans \nles airs."; /* "Un mystérieux groupe s'est montré assez soudainement.\nOn dirait bien qu'ils veulent m'inviter pour un voyage dans \nles airs." */
+const char MasterStringListFrench330[] = "Un myst\351rieux groupe s'est montr\351 assez\nsoudainement. On dirait bien qu'ils veulent m'inviter\npour un voyage dans les airs."; /* "Un mystérieux groupe s'est montré assez soudainement.\nOn dirait bien qu'ils veulent m'inviter pour un voyage dans \nles airs." */
 
 const char MasterStringListFrench331[] = "Hein ? C'est quoi \347a ? Des menottes ?!\nWhoa-whoa, attendez deux secondes !\nVous \352tes en train de me dire que je me \nsuis enfui d'une base militaire ?!"; /* "Hein ? C'est quoi ça ? Des menottes ?!\nWhoa-whoa, attendez deux secondes !\nVous êtes en train de me dire que je me \nsuis enfui d'une base militaire ?!" */
 
 const char MasterStringListFrench332[] = "\307a ressemblait \340 une mauvaise blague au d\351part,\nmais ma patience a d\351j\340 atteint ses limites."; /* "Ça ressemblait à une mauvaise blague au départ,\nmais ma patience a déjà atteint ses limites." */
 
-const char MasterStringListFrench333[] = "Je dois me barrer de cet endroit ennuyeux et fissa !"; /* "Je dois me barrer de cet endroit ennuyeux et fissa !" */
+const char MasterStringListFrench333[] = "Je dois me barrer de cet endroit\nennuyeux et fissa !"; /* "Je dois me barrer de cet endroit ennuyeux et fissa !" */
 
 const char MasterStringListFrench334[] = "Je m'appelle Sonic ! Sonic the Hedgehog !"; /* "Je m'appelle Sonic ! Sonic the Hedgehog !" */
 
@@ -567,7 +567,7 @@ const char MasterStringListFrench380[] = "On dirait bien qu'il s'agissait \nd'un
 
 const char MasterStringListFrench381[] = "\307a risque d'\352tre difficile de \nfaire des recherches ici,\nmais r\342ler ne me m\350nera \n\340 rien."; /* "Ça risque d'être difficile de \nfaire des recherches ici,\nmais râler ne me mènera \nà rien." */
 
-const char MasterStringListFrench382[] = "Je dois r\351cup\351rer les morceaux \nl'\311meraude M\350re sans attendre !"; /* "Je dois récupérer les morceaux \nl'Émeraude Mère sans attendre !" */
+const char MasterStringListFrench382[] = "Je dois r\351cup\351rer les morceaux de\nl'\311meraude M\350re sans attendre !"; /* "Je dois récupérer les morceaux \nl'Émeraude Mère sans attendre !" */
 
 const char MasterStringListFrench383[] = "Je m'appelle Miles Prower. Mais \ntout le monde m'appelle Tails."; /* "Je m'appelle Miles Prower. Mais \ntout le monde m'appelle Tails." */
 
@@ -593,7 +593,7 @@ const char MasterStringListFrench393[] = "C'est d\351cid\351 ! On va d'abord y a
 
 const char MasterStringListFrench394[] = "Je m'appelle Sonic ! Sonic the Hedgehog !"; /* "Je m'appelle Sonic ! Sonic the Hedgehog !" */
 
-const char MasterStringListFrench395[] = "On est entrer dans la pyramide histoire \nde chercher la base secr\350te d'Eggman."; /* "On est entrer dans la pyramide histoire \nde chercher la base secrète d'Eggman." */
+const char MasterStringListFrench395[] = "On est entr\351s dans la pyramide histoire \nde chercher la base secr\350te d'Eggman."; /* "On est entrer dans la pyramide histoire \nde chercher la base secrète d'Eggman." */
 
 const char MasterStringListFrench396[] = "Il doit forc\351ment y avoir quelque chose \nqui nous permettra d'aller dans l'espace.\nOn ne peut pas rester plant\351s l\340. Let's move it !"; /* "Il doit forcément y avoir quelque chose \nqui nous permettra d'aller dans l'espace.\nOn ne peut pas rester plantés là. Let's move it !" */
 
@@ -605,7 +605,7 @@ const char MasterStringListFrench399[] = "Mais pour passer cette porte,\nil va n
 
 const char MasterStringListFrench400[] = "Hein ? Je dois aller chercher la cl\351 ?\nOh non mais c'est pas vrai. \nBon, c'est pour l'\311meraude M\350re,\nj'imagine."; /* "Hein ? Je dois aller chercher la clé ?\nOh non mais c'est pas vrai. \nBon, c'est pour l'Émeraude Mère,\nj'imagine." */
 
-const char MasterStringListFrench401[] = "Hmph, Je vais vous montrer\nles talents du meilleur\nchasseur de tr\351sor au monde !"; /* "Hmph, Je vais vous montrer\nles talents du meilleur\nchasseur de trésor au monde !" */
+const char MasterStringListFrench401[] = "Hmph, Je vais vous montrer\nles talents du meilleur\nchasseur de tr\351sors au monde !"; /* "Hmph, Je vais vous montrer\nles talents du meilleur\nchasseur de trésor au monde !" */
 
 const char MasterStringListFrench402[] = "Je suis Knuckles the Echidna. \nAppelle-moi Knuckles."; /* "Je suis Knuckles the Echidna. \nAppelle-moi Knuckles." */
 
@@ -689,7 +689,7 @@ const char MasterStringListFrench441[] = "J'ai pu obtenir le journal de\nmon gra
 
 const char MasterStringListFrench442[] = "Et elle aurait apparemment \351t\351\nscell\351e dans l'usine militaire\npendant tout ce temps, endormie\npendant environ 50 ans."; /* "Et elle aurait apparemment été\nscellée dans l'usine militaire\npendant tout ce temps, endormie\npendant environ 50 ans." */
 
-const char MasterStringListFrench443[] = "Hmph ! C'est comme jeter des perles aux pourceaux !"; /* "Hmph ! C'est comme jeter des perles aux pourceaux !" */
+const char MasterStringListFrench443[] = "Hmph ! C'est comme jeter des perles\naux pourceaux !"; /* "Hmph ! C'est comme jeter des perles aux pourceaux !" */
 
 const char MasterStringListFrench444[] = "Voyons voir, il s'agit du dernier travail\nde mon grand-p\350re qu'on appelait \"le plus\ngrand cerveau scientifique de l'histoire\",\nprofesseur G\351rald."; /* "Voyons voir, il s'agit du dernier travail\nde mon grand-père qu'on appelait \"le plus\ngrand cerveau scientifique de l'histoire\",\nprofesseur Gérald." */
 
@@ -721,9 +721,9 @@ const char MasterStringListFrench457[] = "Je suis le plus grand g\351nie scienti
 
 const char MasterStringListFrench458[] = "Avant que je ne lib\350re Shadow de la base,\ntout se passait bien,"; /* "Avant que je ne libère Shadow de la base,\ntout se passait bien," */
 
-const char MasterStringListFrench459[] = "mais apr\350s, il m'a dit quelque chose \340 propos\nde ramener les \311meraude du Chaos \340 la colonie\nspatiale : ARK."; /* "mais après, il m'a dit quelque chose à propos\nde ramener les Émeraudes du Chaos à la colonie\nspatiale : ARK." */
+const char MasterStringListFrench459[] = "mais apr\350s, il m'a dit quelque chose \340 propos\nde ramener les \311meraudes du Chaos \340 la colonie\nspatiale : ARK."; /* "mais après, il m'a dit quelque chose à propos\nde ramener les Émeraudes du Chaos à la colonie\nspatiale : ARK." */
 
-const char MasterStringListFrench460[] = "Je n'ai aucune id\351e de ce qu'il peut bien se passer.\nPour le moment, je vais retourner \340 la base, il \nsemblerait que j'ai beaucoup de choses \340 rev\351rifier."; /* "Je n'ai aucune idée de ce qu'il peut bien se passer.\nPour le moment, je vais retourner à la base, il \nsemblerait que j'ai beaucoup de choses à revérifier." */
+const char MasterStringListFrench460[] = "Je n'ai aucune id\351e de ce qu'il peut bien se passer.\nPour le moment, je vais retourner \340 la base, il \nsemblerait que j'ai beaucoup de choses \n\340 rev\351rifier."; /* "Je n'ai aucune idée de ce qu'il peut bien se passer.\nPour le moment, je vais retourner à la base, il \nsemblerait que j'ai beaucoup de choses à revérifier." */
 
 const char MasterStringListFrench461[] = "Mon nom est Shadow the Hedgehog.\nLa seule et unique forme de vie ultime."; /* "Mon nom est Shadow the Hedgehog.\nLa seule et unique forme de vie ultime." */
 
@@ -759,7 +759,7 @@ const char MasterStringListFrench476[] = "Tout d'abord, je vais me tenir en face
 
 const char MasterStringListFrench477[] = "Je suis le plus grand g\351nie scientifique \ndu monde, le Dr. Eggman !"; /* "Je suis le plus grand génie scientifique \ndu monde, le Dr. Eggman !" */
 
-const char MasterStringListFrench478[] = "Alors que nous nous dirigions vers le site militaire\npour y voler les \311meraude du Chaos, des obstacles impr\351vus \nse sont mis sur mon chemin !"; /* "Alors que nous nous dirigions vers le site militaire\npour y voler les Émeraudes du Chaos, des obstacles imprévus \nse sont mis sur mon chemin !" */
+const char MasterStringListFrench478[] = "Alors que nous nous dirigions vers le site militaire\npour y voler les \311meraudes du Chaos, des obstacles\nimpr\351vus se sont mis sur mon chemin !"; /* "Alors que nous nous dirigions vers le site militaire\npour y voler les Émeraudes du Chaos, des obstacles imprévus \nse sont mis sur mon chemin !" */
 
 const char MasterStringListFrench479[] = "Shadow, Rouge ! \nLaissez-moi faire et d\351p\352chez-vous !"; /* "Shadow, Rouge ! \nLaissez-moi faire et dépêchez-vous !" */
 
@@ -769,7 +769,7 @@ const char MasterStringListFrench481[] = "Mon nom est Rouge the Bat, \nconnue pa
 
 const char MasterStringListFrench482[] = "Alors, en suivant le plan du docteur,\nje me suis rendue dans le coffre-fort\ndes militaires."; /* "Alors, en suivant le plan du docteur,\nje me suis rendue dans le coffre-fort\ndes militaires." */
 
-const char MasterStringListFrench483[] = "Je vais devoir y trouver les trois \311meraude du Chaos, \nmais je suis s\373re que \347a sera du g\342teau pour \nquelqu'un comme moi."; /* "Je vais devoir y trouver les trois Émeraudes du Chaos, \nmais je suis sûre que ça sera du gâteau pour \nquelqu'un comme moi." */
+const char MasterStringListFrench483[] = "Je vais devoir y trouver les trois \311meraudes\ndu Chaos, mais je suis s\373re que \347a sera du\ng\342teau pour quelqu'un comme moi."; /* "Je vais devoir y trouver les trois Émeraudes du Chaos, \nmais je suis sûre que ça sera du gâteau pour \nquelqu'un comme moi." */
 
 const char MasterStringListFrench484[] = "Mon nom est Rouge the Bat, \nconnue par certains sous le \nnom de Treasure Hunter Rouge."; /* "Mon nom est Rouge the Bat, \nconnue par certains sous le \nnom de Treasure Hunter Rouge." */
 
@@ -799,7 +799,7 @@ const char MasterStringListFrench496[] = "Tu ne veux pas comprendre...\nJe vais 
 
 const char MasterStringListFrench497[] = "Mon nom est Rouge the Bat, \nconnue par certains sous le \nnom de Treasure Hunter Rouge."; /* "Mon nom est Rouge the Bat, \nconnue par certains sous le \nnom de Treasure Hunter Rouge." */
 
-const char MasterStringListFrench498[] = "En utilisant les \311meraudes du Chaos qu'on a vol\351es\ndans la base, nous avons enfin pu annoncer nos plans\nde conqu\352te du monde."; /* "En utilisant les Émeraudes du Chaos qu'on a volées\ndans la base, nous avons enfin pu annoncer nos plans\nde conquête du monde." */
+const char MasterStringListFrench498[] = "En utilisant les \311meraudes du Chaos qu'on a vol\351es\ndans la base, nous avons enfin pu annoncer nos\nplans de conqu\352te du monde."; /* "En utilisant les Émeraudes du Chaos qu'on a volées\ndans la base, nous avons enfin pu annoncer nos plans\nde conquête du monde." */
 
 const char MasterStringListFrench499[] = "Mais le fameux Eclipse Cannon prend\ntrop de temps \340 recharger, maintenant,"; /* "Mais le fameux Eclipse Cannon prend\ntrop de temps à recharger, maintenant," */
 
@@ -823,11 +823,11 @@ const char MasterStringListFrench508[] = "Mon nom est Rouge the Bat, \nconnue pa
 
 const char MasterStringListFrench509[] = "Mais la v\351rit\351 est que, j'imagine\nque ce n'est pas la seule chose que\nje fais."; /* "Mais la vérité est que, j'imagine\nque ce n'est pas la seule chose que\nje fais." */
 
-const char MasterStringListFrench510[] = "Alors que j'\351tais retourn\351e \340 la colonie un peu avant tout\nle monde et que je faisais mon job secret,\nla fameuse \351quipe a fini par mettre les pieds ici."; /* "Alors que j'étais retournée à la colonie un peu avant tout\nle monde et que je faisais mon job secret,\nla fameuse équipe a fini par mettre les pieds ici." */
+const char MasterStringListFrench510[] = "Alors que j'\351tais retourn\351e \340 la colonie un peu\navant tout le monde et que je faisais mon job secret,\nla fameuse \351quipe a fini par mettre les pieds ici."; /* "Alors que j'étais retournée à la colonie un peu avant tout\nle monde et que je faisais mon job secret,\nla fameuse équipe a fini par mettre les pieds ici." */
 
-const char MasterStringListFrench511[] = "Ce qui veut dire que les pi\350ces de l'\311meraude M\350re\nsont-elles aussi arriv\351es ici. C'est le moment !"; /* "Ce qui veut dire que les pièces de l'Émeraude Mère\nsont-elles aussi arrivées ici. C'est le moment !" */
+const char MasterStringListFrench511[] = "Ce qui veut dire que les pi\350ces de l'\311meraude M\350re\nsont elles aussi arriv\351es ici. C'est le moment !"; /* "Ce qui veut dire que les pièces de l'Émeraude Mère\nsont-elles aussi arrivées ici. C'est le moment !" */
 
-const char MasterStringListFrench512[] = "J'ai d\351j\340 obtenu les informations concernant\nle projet Shadow, alors je pourrais aussi bien\nme r\351cup\351rer l'\311meraude M\350re et faire mes adieux \340\ncet endroit."; /* "J'ai déjà obtenu les informations concernant\nle projet Shadow, alors je pourrais aussi bien\nme récupérer l'Émeraude Mère et faire mes adieux à\ncet endroit." */
+const char MasterStringListFrench512[] = "J'ai d\351j\340 obtenu les informations concernant\nle projet Shadow, alors je pourrais aussi bien\nme r\351cup\351rer l'\311meraude M\350re et faire mes adieux \n\340 cet endroit."; /* "J'ai déjà obtenu les informations concernant\nle projet Shadow, alors je pourrais aussi bien\nme récupérer l'Émeraude Mère et faire mes adieux à\ncet endroit." */
 
 const char MasterStringListFrench513[] = "Mon nom est Rouge the Bat, \nconnue par certains sous le \nnom de Treasure Hunter Rouge."; /* "Mon nom est Rouge the Bat, \nconnue par certains sous le \nnom de Treasure Hunter Rouge." */
 
@@ -855,19 +855,19 @@ const char MasterStringListFrench524[] = "Mon nom est Shadow the Hedgehog.\nLa s
 
 const char MasterStringListFrench525[] = "Les sept \311meraudes du Chaos sont enfin r\351unies.\nLe moment o\371 mon v\234ux pourra \352tre r\351alis\351 va \nbient\364t arriver."; /* "Les sept Émeraudes du Chaos sont enfin réunies.\nLe moment où mon vœux pourra être réalisé va \nbientôt arriver." */
 
-const char MasterStringListFrench526[] = "Et pourtant, au dernier moment, quelqu'un semble se \ndiriger vers le canon de l'Eclipse Cannon. \nC'est totalement futile..."; /* "Et pourtant, au dernier moment, quelqu'un semble se \ndiriger vers le canon de l'Eclipse Cannon. \nC'est totalement futile..." */
+const char MasterStringListFrench526[] = "Et pourtant, au dernier moment, quelqu'un\nsemble se diriger vers le canon de\nl'Eclipse Cannon. C'est totalement futile..."; /* "Et pourtant, au dernier moment, quelqu'un semble se \ndiriger vers le canon de l'Eclipse Cannon. \nC'est totalement futile..." */
 
-const char MasterStringListFrench527[] = "Je ne peux pas permettre de louper une seule \351tape\ndans ce plan. Je dois disposer de toute g\352ne."; /* "Je ne peux pas permettre de louper une seule étape\ndans ce plan. Je dois disposer de toute gêne." */
+const char MasterStringListFrench527[] = "Je ne peux pas permettre de louper une\nseule \351tape dans ce plan.\nJe dois disposer de toute g\352ne."; /* "Je ne peux pas permettre de louper une seule étape\ndans ce plan. Je dois disposer de toute gêne." */
 
 const char MasterStringListFrench528[] = "Mon nom est Shadow the Hedgehog.\nLa seule et unique forme de vie ultime."; /* "Mon nom est Shadow the Hedgehog.\nLa seule et unique forme de vie ultime." */
 
-const char MasterStringListFrench529[] = "\300 ma grande surprise, celui qui se dirigait vers\nl'Eclipse Cannon n'était autre que cet h\351risson bleu."; /* "À ma grande surprise, celui qui se dirigait vers\nl'Eclipse Cannon n'était autre que cet hérisson bleu." */
+const char MasterStringListFrench529[] = "\300 ma grande surprise, celui qui se dirigeait vers\nl'Eclipse Cannon n'\351tait autre que cet\nh\351risson bleu."; /* "À ma grande surprise, celui qui se dirigait vers\nl'Eclipse Cannon n'était autre que cet hérisson bleu." */
 
-const char MasterStringListFrench530[] = "Je pensais r\351ellement qu'il s'\351tait transform\351\nen poussi\350re spatiale dans cette capsule, mais\nil semblerait que j'ai eu tord."; /* "Je pensais réellement qu'il s'était transformé\nen poussière spatiale dans cette capsule, mais\nil semblerait que j'ai eu tord." */
+const char MasterStringListFrench530[] = "Je pensais r\351ellement qu'il s'\351tait transform\351\nen poussi\350re spatiale dans cette capsule, mais\nil semblerait que j'ai eu tort."; /* "Je pensais réellement qu'il s'était transformé\nen poussière spatiale dans cette capsule, mais\nil semblerait que j'ai eu tord." */
 
 const char MasterStringListFrench531[] = "Maintenant, j'en suis convaincu.\nCet h\351risson est dangereux !"; /* "Maintenant, j'en suis convaincu.\nCet hérisson est dangereux !" */
 
-const char MasterStringListFrench532[] = "Si tu le souhaites, nous allons r\351gler nos\ncomptes ici. Sois t\351moin de la puissance de la forme\nde vie ultime !"; /* "Si tu le souhaites, nous allons régler nos\ncomptes ici. Sois témoin de la puissance de la forme\nde vie ultime !" */
+const char MasterStringListFrench532[] = "Si tu le souhaites tant, nous allons r\351gler nos\ncomptes ici et maintenant. Sois t\351moin\nde la puissance de la forme de vie ultime !"; /* "Si tu le souhaites, nous allons régler nos\ncomptes ici. Sois témoin de la puissance de la forme\nde vie ultime !" */
 
 const char MasterStringListFrench533[] = "Je m'appelle Amy Rose. Je \nsuis une adorable fille pleine d'\351nergie !"; /* "Je m'appelle Amy Rose. Je \nsuis une adorable fille pleine d'énergie !" */
 
@@ -907,7 +907,7 @@ const char MasterStringListFrench550[] = "\tMission al\351atoire"; /* "\tMission
 
 const char MasterStringListFrench551[] = "\tCourse de vitesse"; /* "\tCourse de vitesse" */
 
-const char MasterStringListFrench552[] = "\tChasse au tr\351sor"; /* "\tChasse au trésor" */
+const char MasterStringListFrench552[] = "\tChasse au tr\351sors"; /* "\tChasse au trésor" */
 
 const char MasterStringListFrench554[] = "\tKarat\351 de Chao."; /* "\tKaraté de Chao." */
 
@@ -1543,9 +1543,9 @@ const char MasterStringListKFrench190[] = "Introduction"; /* "Introduction" */
 
 const char MasterStringListKFrench191[] = "Entr\351e de Knuckles"; /* "Entrée de Knuckles" */
 
-const char MasterStringListKFrench193[] = "\311vasion de Prison Island"; /* "Évasion de Prison Island" */
+const char MasterStringListKFrench193[] = "\311vasion de\nPrison Island"; /* "Évasion de Prison Island" */
 
-const char MasterStringListKFrench194[] = "Confrontation avec Shadow"; /* "Confrontation avec Shadow" */
+const char MasterStringListKFrench194[] = "Confrontation avec\nShadow"; /* "Confrontation avec Shadow" */
 
 const char MasterStringListKFrench195[] = "Montagne hant\351e"; /* "Montagne hantée" */
 
@@ -1555,15 +1555,15 @@ const char MasterStringListKFrench197[] = "Mines aquatiques"; /* "Mines aquatiqu
 
 const char MasterStringListKFrench198[] = "O\371 se trouve Eggman ?"; /* "Où se trouve Eggman ?" */
 
-const char MasterStringListKFrench199[] = "La base secr\350te d'Eggman"; /* "La base secrète d'Eggman" */
+const char MasterStringListKFrench199[] = "La base secr\350te\nd'Eggman"; /* "La base secrète d'Eggman" */
 
-const char MasterStringListKFrench200[] = "Confrontation avec le gardien"; /* "Confrontation avec le gardien" */
+const char MasterStringListKFrench200[] = "Confrontation avec\nle gardien"; /* "Confrontation avec le gardien" */
 
-const char MasterStringListKFrench201[] = "D\351collage de la navette"; /* "Décollage de la navette" */
+const char MasterStringListKFrench201[] = "D\351collage de la\nnavette"; /* "Décollage de la navette" */
 
-const char MasterStringListKFrench202[] = "Colonie de l'espace ARK"; /* "Colonie de l'espace ARK" */
+const char MasterStringListKFrench202[] = "Colonie de l'espace\nARK"; /* "Colonie de l'espace ARK" */
 
-const char MasterStringListKFrench203[] = "Derni\350res pi\350ces de l'\311meraude"; /* "Dernières pièces de l'Émeraude" */
+const char MasterStringListKFrench203[] = "Derni\350res pi\350ces de\nl'\311meraude"; /* "Dernières pièces de l'Émeraude" */
 
 const char MasterStringListKFrench204[] = "Sonic a des probl\350mes"; /* "Sonic a des problèmes" */
 
@@ -1571,23 +1571,23 @@ const char MasterStringListKFrench205[] = "Introduction"; /* "Introduction" */
 
 const char MasterStringListKFrench206[] = "Entr\351e de Rouge"; /* "Entrée de Rouge" */
 
-const char MasterStringListKFrench207[] = "Encore la base secr\350te !"; /* "Encore la base secrète !" */
+const char MasterStringListKFrench207[] = "Encore la base\nsecr\350te !"; /* "Encore la base secrète !" */
 
 const char MasterStringListKFrench208[] = "Le pass\351 de Shadow"; /* "Le passé de Shadow" */
 
-const char MasterStringListKFrench209[] = "Infiltration de la base secr\350te"; /* "Infiltration de la base secrète" */
+const char MasterStringListKFrench209[] = "Infiltration de la\nbase secr\350te"; /* "Infiltration de la base secrète" */
 
-const char MasterStringListKFrench210[] = "Rassemblement des vilains"; /* "Rassemblement des vilains" */
+const char MasterStringListKFrench210[] = "Rassemblement des\nvilains"; /* "Rassemblement des vilains" */
 
-const char MasterStringListKFrench211[] = "Trouver les \311meraudes"; /* "Trouver les Émeraudes" */
+const char MasterStringListKFrench211[] = "Trouver les\n\311meraudes"; /* "Trouver les Émeraudes" */
 
-const char MasterStringListKFrench212[] = "Confrontation avec Sonic"; /* "Confrontation avec Sonic" */
+const char MasterStringListKFrench212[] = "Confrontation avec\nSonic"; /* "Confrontation avec Sonic" */
 
 const char MasterStringListKFrench214[] = "La derni\350re \311meraude"; /* "La dernière Émeraude" */
 
-const char MasterStringListKFrench215[] = "Emb\373che dans la base secr\350te"; /* "Embûche dans la base secrète" */
+const char MasterStringListKFrench215[] = "Emb\373che dans la\nbase secr\350te"; /* "Embûche dans la base secrète" */
 
-const char MasterStringListKFrench216[] = "Confrontation avec Knuckles"; /* "Confrontation avec Knuckles" */
+const char MasterStringListKFrench216[] = "Confrontation avec\nKnuckles"; /* "Confrontation avec Knuckles" */
 
 const char MasterStringListKFrench218[] = "Le secret de Shadow"; /* "Le secret de Shadow" */
 
@@ -1609,13 +1609,13 @@ const char MasterStringListKFrench328[] = "\tBouton B pour revenir \340 l'\351cr
 
 const char MasterStringListKFrench329[] = "Je m'appelle Sonic ! Sonic the Hedgehog !"; /* "Je m'appelle Sonic ! Sonic the Hedgehog !" */
 
-const char MasterStringListKFrench330[] = "Un myst\351rieux groupe s'est montr\351 assez soudainement.\nOn dirait bien qu'ils veulent m'inviter pour un voyage dans \nles airs."; /* "Un mystérieux groupe s'est montré assez soudainement.\nOn dirait bien qu'ils veulent m'inviter pour un voyage dans \nles airs." */
+const char MasterStringListKFrench330[] = "Un myst\351rieux groupe s'est montr\351 assez\nsoudainement. On dirait bien qu'ils veulent m'inviter\npour un voyage dans les airs."; /* "Un mystérieux groupe s'est montré assez soudainement.\nOn dirait bien qu'ils veulent m'inviter pour un voyage dans \nles airs." */
 
 const char MasterStringListKFrench331[] = "Hein ? C'est quoi \347a ? Des menottes ?!\nWhoa-whoa, attendez deux secondes !\nVous \352tes en train de me dire que je me \nsuis enfui d'une base militaire ?!"; /* "Hein ? C'est quoi ça ? Des menottes ?!\nWhoa-whoa, attendez deux secondes !\nVous êtes en train de me dire que je me \nsuis enfui d'une base militaire ?!" */
 
 const char MasterStringListKFrench332[] = "\307a ressemblait \340 une mauvaise blague au d\351part,\nmais ma patience a d\351j\340 atteint ses limites."; /* "Ça ressemblait à une mauvaise blague au départ,\nmais ma patience a déjà atteint ses limites." */
 
-const char MasterStringListKFrench333[] = "Je dois me barrer de cet endroit ennuyeux et fissa !"; /* "Je dois me barrer de cet endroit ennuyeux et fissa !" */
+const char MasterStringListKFrench333[] = "Je dois me barrer de cet endroit\nennuyeux et fissa !"; /* "Je dois me barrer de cet endroit ennuyeux et fissa !" */
 
 const char MasterStringListKFrench334[] = "Je m'appelle Sonic ! Sonic the Hedgehog !"; /* "Je m'appelle Sonic ! Sonic the Hedgehog !" */
 
@@ -1739,7 +1739,7 @@ const char MasterStringListKFrench393[] = "C'est d\351cid\351 ! On va d'abord y 
 
 const char MasterStringListKFrench394[] = "Je m'appelle Sonic ! Sonic the Hedgehog !"; /* "Je m'appelle Sonic ! Sonic the Hedgehog !" */
 
-const char MasterStringListKFrench395[] = "On est entrer dans la pyramide histoire \nde chercher la base secr\350te d'Eggman."; /* "On est entrer dans la pyramide histoire \nde chercher la base secrète d'Eggman." */
+const char MasterStringListKFrench395[] = "On est entr\351s dans la pyramide histoire \nde chercher la base secr\350te d'Eggman."; /* "On est entrer dans la pyramide histoire \nde chercher la base secrète d'Eggman." */
 
 const char MasterStringListKFrench396[] = "Il doit forc\351ment y avoir quelque chose \nqui nous permettra d'aller dans l'espace.\nOn ne peut pas rester plant\351 l\340. Let's move it !"; /* "Il doit forcément y avoir quelque chose \nqui nous permettra d'aller dans l'espace.\nOn ne peut pas rester planté là. Let's move it !" */
 
@@ -1751,7 +1751,7 @@ const char MasterStringListKFrench399[] = "Mais pour passer cette porte,\nil va 
 
 const char MasterStringListKFrench400[] = "Hein ? Je dois aller chercher la cl\351 ?\nOh non mais c'est pas vrai. \nBon, c'est pour l'\311meraude M\350re,\nj'imagine."; /* "Hein ? Je dois aller chercher la clé ?\nOh non mais c'est pas vrai. \nBon, c'est pour l'Émeraude Mère,\nj'imagine." */
 
-const char MasterStringListKFrench401[] = "Hmph, Je vais vous montrer\nles talents du meilleur\nchasseur de tr\351sor au monde !"; /* "Hmph, Je vais vous montrer\nles talents du meilleur\nchasseur de trésor au monde !" */
+const char MasterStringListKFrench401[] = "Hmph, Je vais vous montrer\nles talents du meilleur\nchasseur de tr\351sors au monde !"; /* "Hmph, Je vais vous montrer\nles talents du meilleur\nchasseur de trésor au monde !" */
 
 const char MasterStringListKFrench402[] = "Je suis Knuckles the Echidna. \nAppelle-moi Knuckles."; /* "Je suis Knuckles the Echidna. \nAppelle-moi Knuckles." */
 
@@ -1835,7 +1835,7 @@ const char MasterStringListKFrench441[] = "J'ai pu obtenir le journal de\nmon gr
 
 const char MasterStringListKFrench442[] = "Et elle aurait apparemment \351t\351\nscell\351e dans l'usine militaire\npendant tout ce temps, endormie\npendant environ 50 ans."; /* "Et elle aurait apparemment été\nscellée dans l'usine militaire\npendant tout ce temps, endormie\npendant environ 50 ans." */
 
-const char MasterStringListKFrench443[] = "Hmph ! C'est comme jet\351 des perles aux pourceaux !"; /* "Hmph ! C'est comme jeté des perles aux pourceaux !" */
+const char MasterStringListKFrench443[] = "Hmph ! C'est comme jet\351 des perles\naux pourceaux !"; /* "Hmph ! C'est comme jeté des perles aux pourceaux !" */
 
 const char MasterStringListKFrench444[] = "Voyons voir, il s'agit du dernier travail\nde mon grand-p\350re qu'on appelait \"le plus\ngrand cerveau scientifique de l'histoire\",\nprofesseur G\351rald."; /* "Voyons voir, il s'agit du dernier travail\nde mon grand-père qu'on appelait \"le plus\ngrand cerveau scientifique de l'histoire\",\nprofesseur Gérald." */
 
@@ -1867,9 +1867,9 @@ const char MasterStringListKFrench457[] = "Je suis le plus grand g\351nie scient
 
 const char MasterStringListKFrench458[] = "Avant que je ne lib\350re Shadow de la base,\ntout se passait bien,"; /* "Avant que je ne libère Shadow de la base,\ntout se passait bien," */
 
-const char MasterStringListKFrench459[] = "mais apr\350s, il m'a dit quelque chose \340 propos\nde ramener les \311meraude du Chaos \340 la colonie\nspatiale : ARK."; /* "mais après, il m'a dit quelque chose à propos\nde ramener les Émeraudes du Chaos à la colonie\nspatiale : ARK." */
+const char MasterStringListKFrench459[] = "mais apr\350s, il m'a dit quelque chose \340 propos\nde ramener les \311meraudes du Chaos \340 la colonie\nspatiale : ARK."; /* "mais après, il m'a dit quelque chose à propos\nde ramener les Émeraudes du Chaos à la colonie\nspatiale : ARK." */
 
-const char MasterStringListKFrench460[] = "Je n'ai aucune id\351e de ce qu'il peut bien se passer.\nPour le moment, je vais retourner \340 la base, il \nsemblerait que j'ai beaucoup de choses \340 rev\351rifier."; /* "Je n'ai aucune idée de ce qu'il peut bien se passer.\nPour le moment, je vais retourner à la base, il \nsemblerait que j'ai beaucoup de choses à revérifier." */
+const char MasterStringListKFrench460[] = "Je n'ai aucune id\351e de ce qu'il peut bien se passer.\nPour le moment, je vais retourner \340 la base, il \nsemblerait que j'ai beaucoup de choses\n\340 rev\351rifier."; /* "Je n'ai aucune idée de ce qu'il peut bien se passer.\nPour le moment, je vais retourner à la base, il \nsemblerait que j'ai beaucoup de choses à revérifier." */
 
 const char MasterStringListKFrench461[] = "Mon nom est Shadow the Hedgehog.\nLa seule et unique forme de vie ultime."; /* "Mon nom est Shadow the Hedgehog.\nLa seule et unique forme de vie ultime." */
 
@@ -1905,7 +1905,7 @@ const char MasterStringListKFrench476[] = "Tout d'abord, je vais me tenir en fac
 
 const char MasterStringListKFrench477[] = "Je suis le plus grand g\351nie scientifique \ndu monde, le Dr. Eggman !"; /* "Je suis le plus grand génie scientifique \ndu monde, le Dr. Eggman !" */
 
-const char MasterStringListKFrench478[] = "Alors que nous nous dirigions vers le site militaire\npour y voler les \311meraude du Chaos, des obstacles impr\351vus \nse sont mis sur mon chemin !"; /* "Alors que nous nous dirigions vers le site militaire\npour y voler les Émeraudes du Chaos, des obstacles imprévus \nse sont mis sur mon chemin !" */
+const char MasterStringListKFrench478[] = "Alors que nous nous dirigions vers le site militaire\npour y voler les \311meraudes du Chaos, des obstacles\nimpr\351vus se sont mis sur mon chemin !"; /* "Alors que nous nous dirigions vers le site militaire\npour y voler les Émeraudes du Chaos, des obstacles imprévus \nse sont mis sur mon chemin !" */
 
 const char MasterStringListKFrench479[] = "Shadow, Rouge ! \nLaissez-moi faire et d\351p\352chez-vous !"; /* "Shadow, Rouge ! \nLaissez-moi faire et dépêchez-vous !" */
 
@@ -1915,7 +1915,7 @@ const char MasterStringListKFrench481[] = "Mon nom est Rouge the Bat, \nconnue p
 
 const char MasterStringListKFrench482[] = "Alors, en suivant le plan du docteur,\nje me suis rendue dans le coffre-fort\ndes militaires."; /* "Alors, en suivant le plan du docteur,\nje me suis rendue dans le coffre-fort\ndes militaires." */
 
-const char MasterStringListKFrench483[] = "Je vais devoir y trouver les trois \311meraude du Chaos, \nmais je suis s\373re que \347a sera du g\342teau pour \nquelqu'un comme moi."; /* "Je vais devoir y trouver les trois Émeraudes du Chaos, \nmais je suis sûre que ça sera du gâteau pour \nquelqu'un comme moi." */
+const char MasterStringListKFrench483[] = "Je vais devoir y trouver les trois \311meraudes\ndu Chaos, mais je suis s\373re que \347a sera du\ng\342teau pour quelqu'un comme moi."; /* "Je vais devoir y trouver les trois Émeraudes du Chaos, \nmais je suis sûre que ça sera du gâteau pour \nquelqu'un comme moi." */
 
 const char MasterStringListKFrench484[] = "Mon nom est Rouge the Bat, \nconnue par certains sous le \nnom de Treasure Hunter Rouge."; /* "Mon nom est Rouge the Bat, \nconnue par certains sous le \nnom de Treasure Hunter Rouge." */
 
@@ -1945,7 +1945,7 @@ const char MasterStringListKFrench496[] = "Tu ne veux pas comprendre...\nJe vais
 
 const char MasterStringListKFrench497[] = "Mon nom est Rouge the Bat, \nconnue par certains sous le \nnom de Treasure Hunter Rouge."; /* "Mon nom est Rouge the Bat, \nconnue par certains sous le \nnom de Treasure Hunter Rouge." */
 
-const char MasterStringListKFrench498[] = "En utilisant les \311meraudes du Chaos qu'on a vol\351es\ndans la base, nous avons enfin pu annoncer nos plans\nde conqu\352te du monde."; /* "En utilisant les Émeraudes du Chaos qu'on a volées\ndans la base, nous avons enfin pu annoncer nos plans\nde conquête du monde." */
+const char MasterStringListKFrench498[] = "En utilisant les \311meraudes du Chaos qu'on a vol\351es\ndans la base, nous avons enfin pu annoncer nos\nplans de conqu\352te du monde."; /* "En utilisant les Émeraudes du Chaos qu'on a volées\ndans la base, nous avons enfin pu annoncer nos plans\nde conquête du monde." */
 
 const char MasterStringListKFrench499[] = "Mais le fameux Eclipse Cannon prend\ntrop de temps \340 recharger, maintenant,"; /* "Mais le fameux Eclipse Cannon prend\ntrop de temps à recharger, maintenant," */
 
@@ -1969,11 +1969,11 @@ const char MasterStringListKFrench508[] = "Mon nom est Rouge the Bat, \nconnue p
 
 const char MasterStringListKFrench509[] = "Mais la v\351rit\351 est que, j'imagine\nque ce n'est pas la seule chose que\nje fais."; /* "Mais la vérité est que, j'imagine\nque ce n'est pas la seule chose que\nje fais." */
 
-const char MasterStringListKFrench510[] = "Alors que j'\351tais retourn\351e \340 la colonie un peu avant tout\nle monde et que je faisais mon job secret,\nla fameuse \351quipe a fini par mettre les pieds ici."; /* "Alors que j'étais retournée à la colonie un peu avant tout\nle monde et que je faisais mon job secret,\nla fameuse équipe a fini par mettre les pieds ici." */
+const char MasterStringListKFrench510[] = "Alors que j'\351tais retourn\351e \340 la colonie un peu\navant tout le monde et que je faisais mon job secret,\nla fameuse \351quipe a fini par mettre les pieds ici."; /* "Alors que j'étais retournée à la colonie un peu avant tout\nle monde et que je faisais mon job secret,\nla fameuse équipe a fini par mettre les pieds ici." */
 
-const char MasterStringListKFrench511[] = "Ce qui veut dire que les pi\350ces de l'\311meraude M\350re\nsont-elles aussi arriv\351es ici. C'est le moment !"; /* "Ce qui veut dire que les pièces de l'Émeraude Mère\nsont-elles aussi arrivées ici. C'est le moment !" */
+const char MasterStringListKFrench511[] = "Ce qui veut dire que les pi\350ces de l'\311meraude M\350re\nsont elles aussi arriv\351es ici. C'est le moment !"; /* "Ce qui veut dire que les pièces de l'Émeraude Mère\nsont-elles aussi arrivées ici. C'est le moment !" */
 
-const char MasterStringListKFrench512[] = "J'ai d\351j\340 obtenu les informations concernant\nle projet Shadow, alors je pourrais aussi bien\nme r\351cup\351rer l'\311meraude M\350re et faire mes adieux \340\ncet endroit."; /* "J'ai déjà obtenu les informations concernant\nle projet Shadow, alors je pourrais aussi bien\nme récupérer l'Émeraude Mère et faire mes adieux à\ncet endroit." */
+const char MasterStringListKFrench512[] = "J'ai d\351j\340 obtenu les informations concernant\nle projet Shadow, alors je pourrais aussi bien\nme r\351cup\351rer l'\311meraude M\350re et faire mes adieux \n\340 cet endroit."; /* "J'ai déjà obtenu les informations concernant\nle projet Shadow, alors je pourrais aussi bien\nme récupérer l'Émeraude Mère et faire mes adieux à\ncet endroit." */
 
 const char MasterStringListKFrench513[] = "Mon nom est Rouge the Bat, \nconnue par certains sous le \nnom de Treasure Hunter Rouge."; /* "Mon nom est Rouge the Bat, \nconnue par certains sous le \nnom de Treasure Hunter Rouge." */
 
@@ -2001,19 +2001,19 @@ const char MasterStringListKFrench524[] = "Mon nom est Shadow the Hedgehog.\nLa 
 
 const char MasterStringListKFrench525[] = "Les sept \311meraudes du Chaos sont enfin r\351unies.\nLe moment o\371 mon v\234ux pourra \352tre r\351alis\351 va \nbient\364t arriver."; /* "Les sept Émeraudes du Chaos sont enfin réunies.\nLe moment où mon vœux pourra être réalisé va \nbientôt arriver." */
 
-const char MasterStringListKFrench526[] = "Et pourtant, au dernier moment, quelqu'un semble se \ndiriger vers le canon de l'Eclipse Cannon. \nC'est totalement futile..."; /* "Et pourtant, au dernier moment, quelqu'un semble se \ndiriger vers le canon de l'Eclipse Cannon. \nC'est totalement futile..." */
+const char MasterStringListKFrench526[] = "Et pourtant, au dernier moment, quelqu'un\nsemble se diriger vers le canon de\nl'Eclipse Cannon. C'est totalement futile..."; /* "Et pourtant, au dernier moment, quelqu'un semble se \ndiriger vers le canon de l'Eclipse Cannon. \nC'est totalement futile..." */
 
-const char MasterStringListKFrench527[] = "Je ne peux pas permettre de louper une seule \351tape\ndans ce plan. Je dois disposer de toute g\352ne."; /* "Je ne peux pas permettre de louper une seule étape\ndans ce plan. Je dois disposer de toute gêne." */
+const char MasterStringListKFrench527[] = "Je ne peux pas permettre de louper une\nseule \351tape dans ce plan.\nJe dois disposer de toute g\352ne."; /* "Je ne peux pas permettre de louper une seule étape\ndans ce plan. Je dois disposer de toute gêne." */
 
 const char MasterStringListKFrench528[] = "Mon nom est Shadow the Hedgehog.\nLa seule et unique forme de vie ultime."; /* "Mon nom est Shadow the Hedgehog.\nLa seule et unique forme de vie ultime." */
 
-const char MasterStringListKFrench529[] = "\300 ma grande surprise, celui qui se dirigait vers\nl'Eclipse Cannon n'était autre que cet h\351risson bleu."; /* "À ma grande surprise, celui qui se dirigait vers\nl'Eclipse Cannon n'était autre que cet hérisson bleu." */
+const char MasterStringListKFrench529[] = "\300 ma grande surprise, celui qui se dirigeait vers\nl'Eclipse Cannon n'\351tait autre que cet\nh\351risson bleu."; /* "À ma grande surprise, celui qui se dirigait vers\nl'Eclipse Cannon n'était autre que cet hérisson bleu." */
 
-const char MasterStringListKFrench530[] = "Je pensais r\351ellement qu'il s'\351tait transform\351\nen poussi\350re spatiale dans cette capsule, mais\nil semblerait que j'ai eu tord."; /* "Je pensais réellement qu'il s'était transformé\nen poussière spatiale dans cette capsule, mais\nil semblerait que j'ai eu tord." */
+const char MasterStringListKFrench530[] = "Je pensais r\351ellement qu'il s'\351tait transform\351\nen poussi\350re spatiale dans cette capsule, mais\nil semblerait que j'ai eu tort."; /* "Je pensais réellement qu'il s'était transformé\nen poussière spatiale dans cette capsule, mais\nil semblerait que j'ai eu tord." */
 
 const char MasterStringListKFrench531[] = "Maintenant, j'en suis convaincu.\nCet h\351risson est dangereux !"; /* "Maintenant, j'en suis convaincu.\nCet hérisson est dangereux !" */
 
-const char MasterStringListKFrench532[] = "Si tu le souhaites, nous allons r\351gler nos\ncomptes ici. Sois t\351moin de la puissance de la forme\nde vie ultime !"; /* "Si tu le souhaites, nous allons régler nos\ncomptes ici. Sois témoin de la puissance de la forme\nde vie ultime !" */
+const char MasterStringListKFrench532[] = "Si tu le souhaites tant, nous allons r\351gler nos\ncomptes ici et maintenant. Sois t\351moin\nde la puissance de la forme de vie ultime !"; /* "Si tu le souhaites, nous allons régler nos\ncomptes ici. Sois témoin de la puissance de la forme\nde vie ultime !" */
 
 const char MasterStringListKFrench533[] = "Je m'appelle Amy Rose. Je \nsuis une adorable fille pleine d'\351nergie !"; /* "Je m'appelle Amy Rose. Je \nsuis une adorable fille pleine d'énergie !" */
 
@@ -2053,7 +2053,7 @@ const char MasterStringListKFrench550[] = "\tMission al\351atoire"; /* "\tMissio
 
 const char MasterStringListKFrench551[] = "\tCourse de vitesse"; /* "\tCourse de vitesse" */
 
-const char MasterStringListKFrench552[] = "\tChasse au tr\351sor"; /* "\tChasse au trésor" */
+const char MasterStringListKFrench552[] = "\tChasse au tr\351sors"; /* "\tChasse au trésor" */
 
 const char MasterStringListKFrench554[] = "\tKarat\351 de Chao."; /* "\tKaraté de Chao." */
 
