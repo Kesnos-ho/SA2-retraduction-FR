@@ -23,7 +23,16 @@ Certaines parties du jeu n'ont pas encore été modifiées, par exemple les indi
 
 # <u>Mods utilisés par le mod :</u>
 
-</span><br></b><br><a href="https://gamebanana.com/mods/48871">Enable Hidden Dialogue</a><br><a href="https://gamebanana.com/mods/33171">HD GUI</a> <u><b>(fortement recommandé)</b></u><br><a href="https://gamebanana.com/mods/48872">Cutscene Revamp</a><br><a href="https://gamebanana.com/mods/33162">HD GUI for Character Select Plus</a> <b><u>(recommandé si "</u></b><u><b><a href="https://gamebanana.com/mods/33170">Character Select Plus</a>" est </b></u><b><u>utilisé </u></b><u><b>)</b></u><br><a href="https://gamebanana.com/mods/33149">HD GUI for Chao World Extended</a> <u><b>(recommandé </b></u><b><u>si "</u></b><u><b><a href="https://gamebanana.com/mods/48840">Chao World Extended</a>" est </b></u><b><u>utilisé </u></b><u><b>)</b></u><br><br><a href="https://gamebanana.com/members/submissions/portfolio/1723576">Mes autres traductions françaises.</a><br>N'hésitez pas à m'envoyer des messages privés si vous trouvez des erreurs pour que je puisse les corriger. <a href="https://discord.gg/TPdsRYPFE8" target="_blank">Un serveur discord est aussi disponible à cette adresse en cas de besoin.</a>
+<a href="https://gamebanana.com/mods/48871">Enable Hidden Dialogue</a><br><a href="https://gamebanana.com/mods/33171">HD GUI</a> <u><b>(fortement recommandé)</b></u><br><a href="https://gamebanana.com/mods/48872">Cutscene Revamp</a><br><a href="https://gamebanana.com/mods/33162">HD GUI for Character Select Plus</a> <b><u>(recommandé si "</u></b><u><b><a href="https://gamebanana.com/mods/33170">Character Select Plus</a>" est </b></u><b><u>utilisé </u></b><u><b>)</b></u><br><a href="https://gamebanana.com/mods/33149">HD GUI for Chao World Extended</a> <u><b>(recommandé </b></u><b><u>si "</u></b><u><b><a href="https://gamebanana.com/mods/48840">Chao World Extended</a>" est </b></u><b><u>utilisé </u></b><u><b>)</b></u><br><br><a href="https://gamebanana.com/members/submissions/portfolio/1723576">Mes autres traductions françaises.</a><br>N'hésitez pas à m'envoyer des messages privés si vous trouvez des erreurs pour que je puisse les corriger. <a href="https://discord.gg/TPdsRYPFE8" target="_blank">Un serveur discord est aussi disponible à cette adresse en cas de besoin.</a>
+
+<img width="1024" height="1024" alt="6206d92d0cf96" src="https://github.com/user-attachments/assets/89366ccc-e5e6-4464-95fe-530145d79b0b" /> <img width="1920" height="1080" alt="62b9bce3213ad" src="https://github.com/user-attachments/assets/b28819f1-a385-49cf-8c92-7e1388b95f30" /> <img width="1920" height="1080" alt="62b9bce334527" src="https://github.com/user-attachments/assets/c591fa00-dfa8-4899-80ac-0a2fc604618b" /> <img width="1600" height="900" alt="6206d98913840" src="https://github.com/user-attachments/assets/20d54d59-4161-41af-b97b-c582b62bc877" /> <img width="1600" height="900" alt="6206d9884de9e" src="https://github.com/user-attachments/assets/a52c5bba-ad8e-4263-a8f3-61d1bd613801" /> <img width="1600" height="900" alt="6206d9888091d" src="https://github.com/user-attachments/assets/15548851-bc9d-4f1c-b565-5ee4b6162ffd" /> <img width="1600" height="900" alt="6206d9880389a" src="https://github.com/user-attachments/assets/06463ad6-ccbc-4716-9da9-950d43afb561" />
+
+
+
+
+
+
+
 
 # Crédits :
 
